@@ -8,40 +8,64 @@
     tools:context="com.example.tanvidadu.learnit.SellOption">
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="6"
         android:orientation="horizontal"
         >
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:layout_weight="1">
+            android:layout_weight="1"
+            android:layout_marginTop="18dp">
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="NAME OF CLOTHING"/>
+                android:hint="NAME OF CLOTHING"
+                android:padding="12dp"
+                android:layout_marginBottom="18dp"
+                android:id="@+id/NameOfCloth"/>
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="BRAND" />
+                android:hint="BRAND"
+                style="SellInfoPage"
+                android:padding="12dp"
+                android:layout_marginBottom="18dp"
+                android:id="@+id/BrandName"/>
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="COST PRICE"/>
+                android:hint="COST PRICE"
+                style="SellInfoPage"
+                android:padding="12dp"
+                android:layout_marginBottom="18dp"
+                android:id="@+id/CostPrice"/>
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="PICK DATE"
-                android:onClick="showDatePickerDialog"/>
+                android:onClick="showDatePickerDialog"
+                style="SellInfoPage"
+                android:padding="12dp"
+                android:layout_marginBottom="18dp"/>
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="SIZE"/>
+                android:hint="SIZE"
+                style="SellInfoPage"
+                android:padding="12dp"
+                android:layout_marginBottom="18dp"
+                android:id="@+id/Size"/>
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="SELECT COLOUR "
-                android:id="@+id/okColorButton"/>
+                android:id="@+id/Color"
+                style="SellInfoPage"
+                android:padding="12dp"
+                android:layout_marginBottom="18dp"
+                />
 
         </LinearLayout>
         <LinearLayout
@@ -60,14 +84,29 @@
                 android:text="Upload Image"
                 android:id="@+id/button_sell_upload_image"
                 android:gravity="left"
-                android:onClick="dispatchTakePictureIntent"
+                />
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="5"
+                android:id="@+id/Sell_cloth_bill"/>
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:text="Upload Image"
+                android:id="@+id/button_sell_upload_bill"
+                android:gravity="left"
                 />
         </LinearLayout>
 
     </LinearLayout>
 <Button
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="0dp"
+    android:layout_weight="1"
     android:text="PROCEED"
+    android:id="@+id/Proceed_sell"
+    android:onClick="ProceedFunctionality"
     />
 </LinearLayout>

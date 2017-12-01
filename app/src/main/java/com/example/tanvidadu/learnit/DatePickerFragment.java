@@ -16,7 +16,9 @@ import static android.content.ContentValues.TAG;
  */
 
 public class DatePickerFragment extends DialogFragment implements DatePickerDialog.OnDateSetListener {
-
+    private static int rdayOfMonth;
+    private static int rmonth;
+    private static int ryear;
 
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         // Use the current date as the default date in the picker
@@ -31,8 +33,21 @@ public class DatePickerFragment extends DialogFragment implements DatePickerDial
 
     @Override
     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-        Log.e(TAG, "onDateSet: ");
+        ///Log.e(TAG, "onDateSet: ");
+           rdayOfMonth = dayOfMonth;
+           rmonth = month;
+           ryear = year;
+    }
 
+    public  static int getrdayOfMonth(){
+        return rdayOfMonth;
+    }
 
+    public static int getRmonth() {
+        return rmonth;
+    }
+
+    public static int getRyear() {
+        return ryear;
     }
 }
