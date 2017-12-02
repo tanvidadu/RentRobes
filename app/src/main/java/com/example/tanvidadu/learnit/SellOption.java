@@ -84,10 +84,10 @@ public class SellOption extends AppCompatActivity {
             robeInfoObj.setSize(Integer.valueOf(et.getText().toString()));
             et = (EditText)findViewById(R.id.Color);
             robeInfoObj.setColour(et.getText().toString());
-           /* robeInfoObj.setDay_of_month(DatePickerFragment.getrdayOfMonth());
+            robeInfoObj.setDay_of_month(DatePickerFragment.getrdayOfMonth());
             robeInfoObj.setMonth(DatePickerFragment.getRmonth());
             robeInfoObj.setYear(DatePickerFragment.getRyear());
-*/
+
         ///putting data in firebase
 
         /// calling intent

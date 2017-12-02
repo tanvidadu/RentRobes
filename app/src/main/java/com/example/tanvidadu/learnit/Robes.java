@@ -1,12 +1,17 @@
 package com.example.tanvidadu.learnit;
 
+import android.util.Log;
+
 import java.util.Date;
+
+import static android.content.ContentValues.TAG;
 
 /**
  * Created by Dell on 12/2/2017.
  */
 
 public class Robes {
+    private long unique_pdt_id;
     private String name_of_product;
     private String brand;
     private float cost_price;
@@ -17,6 +22,11 @@ public class Robes {
     private String colour;
     private String image_url;
     private String bill_url;
+
+    Robes(){
+        unique_pdt_id= UniqueRandom.getNextUniqueRandom();
+        //Log.i(TAG, "Robes: "+ unique_pdt_id);
+    }
 
     public void setName_of_product(String name_of_product) {
         this.name_of_product = name_of_product;
@@ -60,7 +70,9 @@ public class Robes {
 
     public void setYear(int year) {
         this.year = year;
+        //Log.i(TAG, "setYear: "+this.year);
     }
+
 
     public int getYear() {
         return year;
