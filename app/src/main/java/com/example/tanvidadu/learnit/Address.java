@@ -2,6 +2,7 @@ package com.example.tanvidadu.learnit;
 
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.util.Log;
 
 import static java.lang.System.in;
 
@@ -17,6 +18,10 @@ public class Address implements Parcelable{
     private String State;
     private String Country;
     private String Pincode;
+
+    public Address(){
+        Log.i("ADDRESS" , "OBJECT INITIALIZED");
+    }
 
     public Address(String s, String s1, String s2, String s3, String s4, String s5, String s6) {
         Street_Address_1 = s;

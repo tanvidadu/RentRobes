@@ -11,7 +11,7 @@ import static android.content.ContentValues.TAG;
  */
 
 public class Robes {
-    private long unique_pdt_id;
+    private static long unique_pdt_id;
     private String name_of_product;
     private String brand;
     private float cost_price;
@@ -108,5 +108,9 @@ public class Robes {
 
     public String getBill_url() {
         return bill_url;
+    }
+
+    public static long getUnique_pdt_id() {
+        return unique_pdt_id;
     }
 }

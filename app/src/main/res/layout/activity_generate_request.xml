@@ -28,10 +28,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="ENTER EXPECTED PRICE"
+        android:id="@+id/sellExpectedPrice"
         />
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="GENERATE REQUEST"
-        android:id="@+id/generateRequest"/>
+        android:id="@+id/generateRequest"
+        android:onClick="GenerateRequest"/>
 </LinearLayout>

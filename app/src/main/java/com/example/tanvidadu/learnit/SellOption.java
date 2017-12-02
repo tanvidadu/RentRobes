@@ -22,7 +22,8 @@ public class SellOption extends AppCompatActivity {
 
     private ImageView imageView;
     private ImageView billView;
-    Robes robeInfoObj = new Robes();
+    public Robes robeInfoObj = new Robes();
+    ///public long UNIQUE_PDT_ID = robeInfoObj.getUnique_pdt_id();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -92,6 +93,7 @@ public class SellOption extends AppCompatActivity {
 
         /// calling intent
             Intent i = new Intent(this , GenerateRequest.class);
+            //i.putExtra("UNIQUE_PDT_ID" , robeInfoObj.getUnique_pdt_id());
             startActivity(i);
 
 
