@@ -18,6 +18,17 @@ public class Address implements Parcelable{
     private String Country;
     private String Pincode;
 
+    public Address(String s, String s1, String s2, String s3, String s4, String s5, String s6) {
+        Street_Address_1 = s;
+        Street_Address_1 = s1;
+        Landmark = s2;
+        City = s3;
+        State = s4;
+        Country = s5;
+        Pincode = s6;
+    }
+
+
     public String getCity() {
         return City;
     }
