@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "317474606401",
+    "firebase_url": "https://learnit-4e443.firebaseio.com",
+    "project_id": "learnit-4e443",
+    "storage_bucket": "learnit-4e443.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:317474606401:android:9f5116bdd3173f4b",
+        "android_client_info": {
+          "package_name": "com.example.tanvidadu.learnit"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "317474606401-6vj6g6t9j0jpbd9g3l6168ki6pegm7gl.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.tanvidadu.learnit",
+            "certificate_hash": "745832a56e24ffcdb5708470c69f86718b07f965"
+          }
+        },
+        {
+          "client_id": "317474606401-5ad4bmtbco4fesfibpihrrsuduffj41s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBwFNhksOvNUoKjRlKIKVmEf0ZABMRpDyo"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "317474606401-5ad4bmtbco4fesfibpihrrsuduffj41s.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
