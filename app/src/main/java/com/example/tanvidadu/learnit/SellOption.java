@@ -8,12 +8,18 @@ import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.AppCompatImageButton;
+import android.util.Base64;
 import android.view.View;
 import android.support.v4.app.Fragment;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.io.ByteArrayOutputStream;
 
 
 public class SellOption extends AppCompatActivity {
@@ -22,17 +28,26 @@ public class SellOption extends AppCompatActivity {
 
     private ImageView imageView;
     private ImageView billView;
-    public Robes robeInfoObj = new Robes();
+
+    private Robes robeInfoObj = new Robes();
+
+    private FirebaseDatabase firebaseDatabase;
+    private DatabaseReference robeToBeSoldDatabaseReference;
     ///public long UNIQUE_PDT_ID = robeInfoObj.getUnique_pdt_id();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sell_option);
+
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        robeToBeSoldDatabaseReference = firebaseDatabase.getReference().child("robeToBeSold");
+
         this.imageView = (ImageView)this.findViewById(R.id.Sell_cloth_image);
         Button photoClothButton = (Button) this.findViewById(R.id.button_sell_upload_image);
         Button photoBillButton = (Button) this.findViewById(R.id.button_sell_upload_bill);
         this.billView = (ImageView) this.findViewById(R.id.Sell_cloth_bill);
+
         photoClothButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -56,10 +71,12 @@ public class SellOption extends AppCompatActivity {
         if (requestCode == CAMERA_CLOTH_REQUEST && resultCode == Activity.RESULT_OK) {
             Bitmap photo = (Bitmap) data.getExtras().get("data");
             imageView.setImageBitmap(photo);
+            robeInfoObj.setImage_url(encodeBitmap(photo));
         }
         if (requestCode == CAMERA_BILL_REQUEST && resultCode == Activity.RESULT_OK) {
             Bitmap photo = (Bitmap) data.getExtras().get("data");
             billView.setImageBitmap(photo);
+            robeInfoObj.setBill_url(encodeBitmap(photo));
         }
     }
 
@@ -90,6 +107,7 @@ public class SellOption extends AppCompatActivity {
             robeInfoObj.setYear(DatePickerFragment.getRyear());
 
         ///putting data in firebase
+        robeToBeSoldDatabaseReference.push().setValue(robeInfoObj);
 
         /// calling intent
             Intent i = new Intent(this , GenerateRequest.class);
@@ -99,7 +117,16 @@ public class SellOption extends AppCompatActivity {
 
         }
 
+     ///Encode the image in required format
+    public String encodeBitmap(Bitmap bitmap) {
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.PNG, 100, baos);
+        String imageEncoded = Base64.encodeToString(baos.toByteArray(), Base64.DEFAULT);
+        return imageEncoded;
     }
+
+    }
+
 
 
 
