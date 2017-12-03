@@ -12,6 +12,7 @@ import static android.content.ContentValues.TAG;
 
 public class Robes {
     private static long unique_pdt_id;
+    private long uniqueId;
     private String name_of_product;
     private String brand;
     private float cost_price;
@@ -26,7 +27,10 @@ public class Robes {
     Robes(){
         unique_pdt_id= UniqueRandom.getNextUniqueRandom();
         //Log.i(TAG, "Robes: "+ unique_pdt_id);
+        //uniqueId = unique_pdt_id;
     }
+
+
 
     public void setName_of_product(String name_of_product) {
         this.name_of_product = name_of_product;
@@ -110,7 +114,17 @@ public class Robes {
         return bill_url;
     }
 
+    public long getUniqueId() {
+        return uniqueId;
+    }
+
+    public void setUniqueId() {
+        this.uniqueId = unique_pdt_id;
+    }
+
     public static long getUnique_pdt_id() {
         return unique_pdt_id;
     }
+
+
 }

@@ -105,9 +105,10 @@ public class SellOption extends AppCompatActivity {
             robeInfoObj.setDay_of_month(DatePickerFragment.getrdayOfMonth());
             robeInfoObj.setMonth(DatePickerFragment.getRmonth());
             robeInfoObj.setYear(DatePickerFragment.getRyear());
+            robeInfoObj.setUniqueId();
 
         ///putting data in firebase
-        robeToBeSoldDatabaseReference.push().setValue(robeInfoObj);
+            robeToBeSoldDatabaseReference.push().setValue(robeInfoObj);
 
         /// calling intent
             Intent i = new Intent(this , GenerateRequest.class);

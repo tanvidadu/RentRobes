@@ -10,16 +10,25 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 public class GenerateRequest extends AppCompatActivity {
 
 
     private static final String TAG ="adress" ;
     private Address address;
+
+    FirebaseDatabase firebaseDatabase;
+    DatabaseReference RequestDatabaseReference;
     ///private long unique_pdt_id = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_generate_request);
+
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        RequestDatabaseReference = firebaseDatabase.getReference().child("RequestGenerated");
 
         Button AddressRequest = (Button) findViewById(R.id.requestAddress);
         AddressRequest.setOnClickListener(new View.OnClickListener() {
@@ -30,8 +39,6 @@ public class GenerateRequest extends AppCompatActivity {
             }
         });
 
-
-
         try {
             Bundle data = getIntent().getExtras();
              address = (Address) data.getParcelable("SellAddress");
@@ -40,10 +47,6 @@ public class GenerateRequest extends AppCompatActivity {
         }catch (Exception e){
             Log.i(TAG , "No ADdress received   :" + e);
         }
-
-
-
-        
     }
     public void showDatePickerDialog(View v) {
         DialogFragment newFragment = new DatePickerFragment();
@@ -56,6 +59,7 @@ public class GenerateRequest extends AppCompatActivity {
     }
 
     public void GenerateRequest(View v){
+        /// Extracting information for request from Xml elements and activities
         SellRequest sellRequest = new SellRequest();
         sellRequest.setAddress(address);
         sellRequest.setDayOfMonth(DatePickerFragment.getrdayOfMonth());
@@ -65,9 +69,10 @@ public class GenerateRequest extends AppCompatActivity {
         sellRequest.setMinute(TimePickerFragment.getMminute());
         EditText et = (EditText)findViewById(R.id.sellExpectedPrice);
         sellRequest.setExpectedPrice(Integer.valueOf(et.getText().toString()));
-
         sellRequest.setUniqueId(Robes.getUnique_pdt_id());
-        Log.i(TAG, "GenerateRequest:UNIQUEID " + Robes.getUnique_pdt_id());
+
+        ///Loading Request into FirebaseDatabase
+        RequestDatabaseReference.push().setValue(sellRequest);
     }
 
 
