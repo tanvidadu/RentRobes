@@ -126,4 +126,5 @@ public class Address implements Parcelable{
         Pincode = in.readString();
     }
 
+
 }

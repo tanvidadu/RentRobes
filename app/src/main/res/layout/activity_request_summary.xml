@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    android:id="@+id/requestSummaryLayout"
+    tools:context="com.example.tanvidadu.learnit.RequestSummary">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="32dp"
+        android:text="REQUEST  SUMMARY"
+        android:padding="12dp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <ImageView
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:padding="18dp"
+            android:id="@+id/requestSummaryRobeImage"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:hint="Name Of User"
+                android:textSize="18sp"
+                android:paddingLeft="32dp"
+                android:id="@+id/requestSummaryNameOfUser"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:hint="Name of Robe"
+            android:textSize="18sp"
+            android:paddingLeft="32dp"
+            android:paddingTop="18dp"
+            android:id="@+id/requestSummaryNameOfRobe"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:hint="Brand"
+                android:paddingLeft="32dp"
+                android:textSize="18sp"
+                android:paddingTop="18dp"
+                android:id="@+id/requestSummaryBrand"/>
+           </LinearLayout>
+    </LinearLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="32dp"
+            android:textSize="18sp"
+            android:paddingTop="18dp"
+            tools:hint="Expected Price"
+            android:id="@+id/requestSummaryExpectedPrice"
+            />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="32dp"
+        android:textSize="18sp"
+        android:paddingTop="18dp"
+        tools:hint="Date"
+        android:id="@+id/requestSummaryDate"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="32dp"
+        android:textSize="18sp"
+        android:paddingTop="18dp"
+        tools:hint="Time"
+        android:id="@+id/requestSummaryTime"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="32dp"
+        android:paddingRight="3dp"
+        android:textSize="18sp"
+        android:paddingTop="18dp"
+        tools:hint="ADDRESS"
+        android:id="@+id/requestSummaryAddress"
+        />
+
+
+</LinearLayout>

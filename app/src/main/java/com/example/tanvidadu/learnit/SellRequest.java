@@ -86,4 +86,11 @@ public class SellRequest {
     public void setUniqueId(long uniqueId) {
         this.uniqueId = uniqueId;
     }
+
+    public String toStringAddress(){
+        String temp = address.getStreet_Address_1() + " , " + address.getStreet_Address_2()
+                 + '\n' + address.getCity() + " , " + address.getState()+
+                "\n" + address.getCountry() + "\nPincode :" + address.getPincode();
+        return temp;
+    }
 }
