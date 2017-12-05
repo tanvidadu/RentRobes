@@ -48,7 +48,7 @@ public class RequestSummary extends AppCompatActivity {
         });
 
         long UniqueId = Robes.getUnique_pdt_id();
-        UniqueId = 65506;
+        ///UniqueId = 65506;
 
         Query requestSummaryRobes = requestSummaryRobeToSold.orderByChild("uniqueId").equalTo(UniqueId);
         requestSummaryRobes.addChildEventListener(new ChildEventListener() {
