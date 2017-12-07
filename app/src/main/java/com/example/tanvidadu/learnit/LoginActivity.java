@@ -39,6 +39,10 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        LinearLayout hiddenLayout = (LinearLayout) findViewById(R.id.hiddenLayout);
+        if(hiddenLayout != null){
+            RemoveSignUp();
+        }
 
 
 
@@ -54,6 +58,7 @@ public class LoginActivity extends AppCompatActivity {
                     customerInfo.setName(user.getDisplayName());
                     customerInfo.setEmail(user.getEmail());
                     customerInfo.setProviderId(user.getProviderId());
+                    CustomerPresent.setCustomerEmail(user.getEmail());
                    /// onSignedinIntialize(user);
                    ///InflateWelcomePage();
 
@@ -65,7 +70,7 @@ public class LoginActivity extends AppCompatActivity {
                         InflateSignup();
                     }
 
-                    Toast.makeText(LoginActivity.this, "YOU HAVE SUCCESSFULLY LOGGED IN", Toast.LENGTH_LONG).show();
+                    //Toast.makeText(LoginActivity.this, "YOU HAVE SUCCESSFULLY LOGGED IN", Toast.LENGTH_LONG).show();
                 } else {
                     onSignedoutCleanUp();
                     // Choose authentication providers
@@ -163,10 +168,11 @@ public class LoginActivity extends AppCompatActivity {
         LinearLayout hiddenLayout = (LinearLayout) findViewById(R.id.hiddenLayout2);
 
             //Inflate the Hidden Layout Information View
+        if(hiddenLayout == null) {
             LinearLayout myLayout = (LinearLayout) findViewById(R.id.WelcomeLayout);
             View hiddenInfo = getLayoutInflater().inflate(R.layout.welcome_activity, myLayout, false);
             myLayout.addView(hiddenInfo);
-
+        }
             if( customerInfo.getName() != null) {
                 onSignedinIntialize(customerInfo.getName());
             }
@@ -218,9 +224,20 @@ public class LoginActivity extends AppCompatActivity {
         parent.removeView(myView);
 
     }
+    //Remove Welcome Page
     public void RemoveWelcomePage(){
         View myView = findViewById(R.id.hiddenLayout2);
         ViewGroup parent = (ViewGroup) myView.getParent();
         parent.removeView(myView);
+    }
+
+    //Further to main Activity
+    public void proceedToMainActivty (View v){
+        Intent i = new Intent(LoginActivity.this,MainActivity.class);
+        LinearLayout hiddenLayout = (LinearLayout) findViewById(R.id.hiddenLayout);
+        if(hiddenLayout != null){
+            RemoveSignUp();
+        }
+        startActivity(i);
     }
 }

@@ -13,14 +13,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".MainActivity" />
         <activity
             android:name=".SellOption"
             android:label="SELL" />
         <activity android:name=".GenerateRequest" />
         <activity android:name=".generate_request_address" />
-        <activity android:name=".RequestSummary"></activity>
+        <activity android:name=".RequestSummary" />
         <activity android:name=".LoginActivity">
+
+        </activity>
+        <activity android:name=".TypeWiseList">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

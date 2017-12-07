@@ -6,4 +6,13 @@ package com.example.tanvidadu.learnit;
 
 public class CustomerPresent {
     public static boolean isPresent = false;
+    public static String customerEmail;
+
+    public static void setCustomerEmail(String customerEmail) {
+        CustomerPresent.customerEmail = customerEmail;
+    }
+
+    public static String getCustomerEmail() {
+        return customerEmail;
+    }
 }
