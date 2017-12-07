@@ -20,10 +20,10 @@
         <activity android:name=".GenerateRequest" />
         <activity android:name=".generate_request_address" />
         <activity android:name=".RequestSummary" />
-        <activity android:name=".LoginActivity">
-
-        </activity>
+        <activity android:name=".LoginActivity"></activity>
         <activity android:name=".TypeWiseList">
+        </activity>
+        <activity android:name=".Catalog">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
