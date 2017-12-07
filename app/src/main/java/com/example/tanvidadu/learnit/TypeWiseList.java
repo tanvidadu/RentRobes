@@ -64,9 +64,31 @@ public class TypeWiseList extends AppCompatActivity {
             }
         });
 
-        RobesAdapter robesAdapter = new RobesAdapter(TypeWiseList.this , robeToBeDisplayed);
-        ListView listView = (ListView) findViewById(R.id.List_View_items);
-        listView.setAdapter(robesAdapter);
+        Thread t = new Thread() {
+
+            @Override
+            public void run() {
+                try {
+                    while (!isInterrupted()) {
+                        Thread.sleep(1000);
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                // update TextView here!
+                                RobesAdapter robesAdapter = new RobesAdapter(TypeWiseList.this , robeToBeDisplayed);
+                                ListView listView = (ListView) findViewById(R.id.List_View_items);
+                                listView.setAdapter(robesAdapter);
+                            }
+                        });
+                    }
+                } catch (InterruptedException e) {
+                }
+            }
+        };
+
+        t.start();
+
+
 
     }
 
