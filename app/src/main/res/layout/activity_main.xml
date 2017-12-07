@@ -14,8 +14,8 @@
         android:layout_weight="1"
         android:textAlignment="center"
         android:gravity="center"
+        android:id="@+id/RentOption"
         android:text="RENT FROM US! "
-
         />
     <TextView
         android:layout_width="match_parent"

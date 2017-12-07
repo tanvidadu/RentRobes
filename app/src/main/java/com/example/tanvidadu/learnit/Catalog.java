@@ -3,6 +3,7 @@ package com.example.tanvidadu.learnit;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -34,9 +35,11 @@ public class Catalog extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Object item = parent.getItemAtPosition(position);
-
+                Log.i("item extracted" , "item extracted" + item);
                 Intent intent = new Intent(Catalog.this,TypeWiseList.class);
                 //based on item add info to intent
+                String temp = (String) item;
+                intent.putExtra("CatalogSelected" , temp);
                 startActivity(intent);
             }
 

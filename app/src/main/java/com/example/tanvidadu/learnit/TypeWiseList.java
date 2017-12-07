@@ -32,6 +32,8 @@ public class TypeWiseList extends AppCompatActivity {
         firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference().child("robeToBeSold");
 
+        String CatalogSelected = getIntent().getExtras().getString("CatalogSelected");
+        Log.i("CatalogSelected" , "CatalogSelected" + CatalogSelected);
 
 
         Query clothToBeDisplayed = databaseReference.orderByChild("name_of_product").equalTo("gloves");
