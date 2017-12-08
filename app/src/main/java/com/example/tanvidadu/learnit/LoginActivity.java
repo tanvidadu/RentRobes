@@ -130,7 +130,10 @@ public class LoginActivity extends AppCompatActivity {
         firebaseAuth.addAuthStateListener(authStateListener);
     }
 
-    public void Signout(View view) {
+    public  void Signout(View view) {
+        AuthUI.getInstance().signOut(LoginActivity.this);
+    }
+    public  void Signout() {
         AuthUI.getInstance().signOut(LoginActivity.this);
     }
 

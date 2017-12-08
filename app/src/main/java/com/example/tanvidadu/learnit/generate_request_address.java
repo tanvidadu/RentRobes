@@ -3,6 +3,9 @@ package com.example.tanvidadu.learnit;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 
@@ -32,5 +35,23 @@ public class generate_request_address extends AppCompatActivity {
         Intent i = new Intent(generate_request_address.this , GenerateRequest.class);
         i.putExtra("SellAddress" ,new Address(temp[0] , temp[1] , temp[2] , temp[3] , temp[4],temp[5] , temp[6]) );
         startActivity(i);
+    }
+
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.main_menu, menu);
+        return true;
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle item selection
+        switch (item.getItemId()) {
+            case R.id.main_menu_settings:
+                Intent i = new Intent(generate_request_address.this , Settings.class);
+                startActivity(i);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 }
