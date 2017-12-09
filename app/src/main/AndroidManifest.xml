@@ -14,11 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".SellOption"
@@ -26,7 +22,13 @@
         <activity android:name=".GenerateRequest" />
         <activity android:name=".generate_request_address" />
         <activity android:name=".RequestSummary" />
-        <activity android:name=".LoginActivity" />
+        <activity android:name=".LoginActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".TypeWiseList"></activity>
         <activity android:name=".Catalog"></activity>
         <activity android:name=".Settings"></activity>
