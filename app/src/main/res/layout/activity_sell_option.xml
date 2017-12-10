@@ -106,7 +106,6 @@
     android:layout_height="0dp"
     android:layout_weight="1"
     android:text="PROCEED"
-    android:id="@+id/Proceed_sell"
     android:onClick="ProceedFunctionality"
     />
 </LinearLayout>

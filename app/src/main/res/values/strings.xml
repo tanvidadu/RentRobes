@@ -1,11 +1,5 @@
 <resources>
     <string name="app_name">LearnIT</string>
-    <string name="title_activity_request_summary">RequestSummary</string>
-    <string name="requestSummaryNameOfUser">requestSummaryNameOfUser</string>
-    <string name="requestSummaryNameofRobe">requestSummaryNameofRobe</string>
-    <string name="requestSummaryBrand">requestSummaryBrand</string>
-    <string name="requestSummaryDate">requestSummaryDate</string>
-    <string name="requestSummaryTime">requestSummaryTime</string>
-    <string name="requestSummaryExectedPrice">Exepected Price : </string>
-    <string name="requestSummaryAddress">requestSummaryAddress</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
 </resources>

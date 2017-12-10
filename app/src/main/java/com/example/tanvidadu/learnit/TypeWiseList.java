@@ -1,5 +1,6 @@
 package com.example.tanvidadu.learnit;
 
+import android.app.FragmentManager;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -8,6 +9,8 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.ArrayAdapter;
+import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 
 import com.google.firebase.database.ChildEventListener;
@@ -32,6 +35,8 @@ public class TypeWiseList extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_type_wise_list);
+
+       
 
         firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference().child("robeToBeSold");
@@ -81,9 +86,10 @@ public class TypeWiseList extends AppCompatActivity {
                             @Override
                             public void run() {
                                 // update TextView here!
-                                RobesAdapter robesAdapter = new RobesAdapter(TypeWiseList.this , robeToBeDisplayed);
-                                ListView listView = (ListView) findViewById(R.id.List_View_items);
-                                listView.setAdapter(robesAdapter);
+                                TypeWiseListFragment typeWiseListFragment = new TypeWiseListFragment();
+                                typeWiseListFragment.setRobeToBeDisplayed(robeToBeDisplayed);
+                                android.support.v4.app.FragmentManager fragmentManager = getSupportFragmentManager();
+                                fragmentManager.beginTransaction().add(R.id.List_container ,typeWiseListFragment ).commit();
                             }
                         });
                     }

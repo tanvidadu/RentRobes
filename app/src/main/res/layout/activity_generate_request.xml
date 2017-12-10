@@ -15,13 +15,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="SELECT SELLING DATE"
-        android:id="@+id/requestDate"
         android:onClick="showDatePickerDialog"/>
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="SELECT VALID TIME"
-        android:id="@+id/requestTime"
         android:onClick="showTimePickerDialog"
         />
     <EditText
@@ -34,6 +32,5 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="GENERATE REQUEST"
-        android:id="@+id/generateRequest"
         android:onClick="GenerateRequest"/>
 </LinearLayout>
