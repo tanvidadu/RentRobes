@@ -12,6 +12,8 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Timer;
+import java.util.TimerTask;
 
 
 /**
@@ -25,7 +27,10 @@ public class TypeWiseListFragment extends Fragment  {
     private OnFragmentInteractionListener mListener;
     private ArrayList<Robes> robeToBeDisplayed;
 
-   private final String List_Items = "List_Items";
+
+
+
+    private final String List_Items = "List_Items";
 
     public TypeWiseListFragment() {
         // Required empty public constructor
@@ -36,15 +41,34 @@ public class TypeWiseListFragment extends Fragment  {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View rootView =  inflater.inflate(R.layout.fragment_type_wise_list, container, false);
+        final View rootView =  inflater.inflate(R.layout.fragment_type_wise_list, container, false);
          if( savedInstanceState != null && robeToBeDisplayed == null){
              robeToBeDisplayed = savedInstanceState.getParcelableArrayList(List_Items);
          }
 
+        final ListView listView ;
+        final RobesAdapter robesAdapter = new RobesAdapter(getActivity(), robeToBeDisplayed);
+        listView = (ListView) rootView.findViewById(R.id.List_View_items);
+
         if( robeToBeDisplayed != null ) {
-            RobesAdapter robesAdapter = new RobesAdapter(getActivity(), robeToBeDisplayed);
-            ListView listView = (ListView) rootView.findViewById(R.id.List_View_items);
-            listView.setAdapter(robesAdapter);
+           /* Thread t = new Thread() {
+                @Override
+                public void run() {
+                    try {
+                        while (!isInterrupted()) {
+                            Thread.sleep(100);
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {*/
+                                    listView.setAdapter(robesAdapter);
+                              /*  }
+                            });
+                        }
+                    } catch (InterruptedException e) {
+                    }
+                }
+            };t.start();
+*/
 
             listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
@@ -52,9 +76,19 @@ public class TypeWiseListFragment extends Fragment  {
                     mListener.onFragmentInteraction(position);
                 }
             });
+
         }
+
+
+
+
+
         return rootView;
     }
+
+    private void runOnUiThread(Runnable runnable) {
+    }
+
 
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(int position) {

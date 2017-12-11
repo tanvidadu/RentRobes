@@ -79,33 +79,13 @@ public class TypeWiseList extends AppCompatActivity implements TypeWiseListFragm
             }
         });
 
-       /* Thread t = new Thread() {
 
-            @Override
-            public void run() {
-                try {
-                    while (!isInterrupted()) {
-                        Thread.sleep(1000);
-                        runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {*/
                                 // update TextView here!
-                                TypeWiseListFragment typeWiseListFragment = new TypeWiseListFragment();
-                                typeWiseListFragment.setRobeToBeDisplayed(robeToBeDisplayed);
-                                android.support.v4.app.FragmentManager fragmentManager = getSupportFragmentManager();
-                                fragmentManager.beginTransaction().add(R.id.List_container ,typeWiseListFragment ).commit();
-                         /*   }
-                        });
-                    }
-                } catch (InterruptedException e) {
+        TypeWiseListFragment typeWiseListFragment = new TypeWiseListFragment();
+        typeWiseListFragment.setRobeToBeDisplayed(robeToBeDisplayed);
+        android.support.v4.app.FragmentManager fragmentManager = getSupportFragmentManager();
+        fragmentManager.beginTransaction().add(R.id.List_container ,typeWiseListFragment ).commit();
 
-                } catch (IllegalStateException e){
-
-                }
-            }
-        };
-
-        t.start();*/
 
 
 
