@@ -1,5 +1,7 @@
 package com.example.tanvidadu.learnit;
 
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.util.Log;
 
 import java.util.Date;
@@ -10,7 +12,7 @@ import static android.content.ContentValues.TAG;
  * Created by Dell on 12/2/2017.
  */
 
-public class Robes {
+public class Robes implements Parcelable {
     private static long unique_pdt_id;
     private long uniqueId;
     private String name_of_product;
@@ -127,4 +129,50 @@ public class Robes {
     }
 
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeLong(uniqueId);
+      dest.writeString(name_of_product);
+      dest.writeString(brand);
+      dest.writeFloat(cost_price);
+      dest.writeInt(year);
+      dest.writeInt(month);
+      dest.writeInt(day_of_month);
+      dest.writeInt(size);
+      dest.writeString(colour);
+      dest.writeString(image_url);
+      dest.writeString(bill_url);
+    }
+
+    public static final Parcelable.Creator<Robes> CREATOR =
+            new Parcelable.Creator<Robes>(){
+
+                public Robes createFromParcel(Parcel in ){
+                 return new Robes(in);
+                }
+
+                @Override
+                public Robes[] newArray(int size) {
+                    return new Robes[size];
+                }
+            };
+
+    public Robes(Parcel in){
+        uniqueId = in.readLong();
+        name_of_product = in.readString();
+        brand = in.readString();
+        cost_price = in.readFloat();
+        year = in.readInt();
+        month = in.readInt();
+        day_of_month = in.readInt();
+        size = in.readInt();
+        colour = in.readString();
+        image_url = in.readString();
+        bill_url = in.readString();
+    }
 }

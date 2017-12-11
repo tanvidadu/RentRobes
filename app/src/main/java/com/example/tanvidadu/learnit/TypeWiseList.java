@@ -12,6 +12,7 @@ import android.widget.ArrayAdapter;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -22,14 +23,17 @@ import com.google.firebase.database.Query;
 
 import java.util.ArrayList;
 
-public class TypeWiseList extends AppCompatActivity {
+public class TypeWiseList extends AppCompatActivity implements TypeWiseListFragment.OnFragmentInteractionListener {
 
     private FirebaseDatabase firebaseDatabase ;
     private DatabaseReference databaseReference;
     ArrayList<Robes> robeToBeDisplayed= new ArrayList<Robes>();
 
 
-
+    @Override
+    public void onFragmentInteraction(int position) {
+        Toast.makeText(TypeWiseList.this,"position " + position  , Toast.LENGTH_SHORT).show();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,7 +79,7 @@ public class TypeWiseList extends AppCompatActivity {
             }
         });
 
-        Thread t = new Thread() {
+       /* Thread t = new Thread() {
 
             @Override
             public void run() {
@@ -84,21 +88,24 @@ public class TypeWiseList extends AppCompatActivity {
                         Thread.sleep(1000);
                         runOnUiThread(new Runnable() {
                             @Override
-                            public void run() {
+                            public void run() {*/
                                 // update TextView here!
                                 TypeWiseListFragment typeWiseListFragment = new TypeWiseListFragment();
                                 typeWiseListFragment.setRobeToBeDisplayed(robeToBeDisplayed);
                                 android.support.v4.app.FragmentManager fragmentManager = getSupportFragmentManager();
                                 fragmentManager.beginTransaction().add(R.id.List_container ,typeWiseListFragment ).commit();
-                            }
+                         /*   }
                         });
                     }
                 } catch (InterruptedException e) {
+
+                } catch (IllegalStateException e){
+
                 }
             }
         };
 
-        t.start();
+        t.start();*/
 
 
 

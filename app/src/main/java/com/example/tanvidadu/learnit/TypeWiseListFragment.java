@@ -7,7 +7,9 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -15,13 +17,15 @@ import java.util.ArrayList;
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link TypeWiseListFragment.OnFragmentInteractionListener} interface
+ * {@link OnFragmentInteractionListener} interface
  * to handle interaction events.
  */
-public class TypeWiseListFragment extends Fragment {
+public class TypeWiseListFragment extends Fragment  {
 
     private OnFragmentInteractionListener mListener;
     private ArrayList<Robes> robeToBeDisplayed;
+
+   private final String List_Items = "List_Items";
 
     public TypeWiseListFragment() {
         // Required empty public constructor
@@ -33,33 +37,44 @@ public class TypeWiseListFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View rootView =  inflater.inflate(R.layout.fragment_type_wise_list, container, false);
-
+         if( savedInstanceState != null && robeToBeDisplayed == null){
+             robeToBeDisplayed = savedInstanceState.getParcelableArrayList(List_Items);
+         }
 
         if( robeToBeDisplayed != null ) {
             RobesAdapter robesAdapter = new RobesAdapter(getActivity(), robeToBeDisplayed);
             ListView listView = (ListView) rootView.findViewById(R.id.List_View_items);
             listView.setAdapter(robesAdapter);
+
+            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    mListener.onFragmentInteraction(position);
+                }
+            });
         }
         return rootView;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
+    public void onButtonPressed(int position) {
         if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
+            mListener.onFragmentInteraction(position);
         }
     }
 
-    //@Override
-    /*public void onAttach(Context context) {
+    @Override
+    public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof OnFragmentInteractionListener) {
+       try{
             mListener = (OnFragmentInteractionListener) context;
-        } else {
-            throw new RuntimeException(context.toString()
+        } catch (ClassCastException e){
+            throw new ClassCastException(context.toString()
                     + " must implement OnFragmentInteractionListener");
         }
-    }*/
+    }
+
+
 
     /*@Override
     public void onDetach() {
@@ -79,10 +94,16 @@ public class TypeWiseListFragment extends Fragment {
      */
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
+        void onFragmentInteraction(int position);
     }
 
     public void setRobeToBeDisplayed(ArrayList<Robes> robeToBeDisplayed) {
         this.robeToBeDisplayed = robeToBeDisplayed;
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        outState.putParcelableArrayList(List_Items , robeToBeDisplayed);
+        super.onSaveInstanceState(outState);
     }
 }
