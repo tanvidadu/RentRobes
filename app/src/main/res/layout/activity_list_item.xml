@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.tanvidadu.learnit.ListItem">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="32dp"
+        android:text="REQUEST  SUMMARY"
+        android:padding="12dp"
+        android:gravity="center"
+        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <ImageView
+            android:layout_width="180dp"
+            android:layout_height="180dp"
+            android:padding="18dp"
+            android:id="@+id/list_item_selected_imageId"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:hint="Name Of Robe"
+                android:textSize="18sp"
+                android:paddingLeft="12dp"
+                android:id="@+id/list_item_selected_name"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:hint="Name of Brand"
+                android:textSize="18sp"
+                android:paddingLeft="12dp"
+                android:paddingTop="18dp"
+                android:id="@+id/list_item_selected_brand"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:hint="Price"
+                android:paddingLeft="12dp"
+                android:textSize="18sp"
+                android:paddingTop="18dp"
+                android:id="@+id/list_item_selected_Price"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:hint="Size"
+                android:paddingLeft="12dp"
+                android:textSize="18sp"
+                android:paddingTop="18dp"
+                android:id="@+id/list_item_selected_Size"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:hint="Colour"
+                android:paddingLeft="12dp"
+                android:textSize="18sp"
+                android:paddingTop="18dp"
+                android:id="@+id/list_item_selected_Color"/>
+        </LinearLayout>
+    </LinearLayout>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="24dp"
+        android:text="RENT "/>
+
+</LinearLayout>
