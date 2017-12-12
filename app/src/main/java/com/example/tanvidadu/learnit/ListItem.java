@@ -50,10 +50,12 @@ public class ListItem extends AppCompatActivity {
             e.printStackTrace();
         }
         Button RentPayment = (Button) findViewById(R.id.Payment);
+        final Robes finalRobeSelected = RobeSelected;
         RentPayment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(ListItem.this , MerchantActivity.class );
+                i.putExtra("PaymentOfRobe" , finalRobeSelected);
                 startActivity(i);
             }
         });

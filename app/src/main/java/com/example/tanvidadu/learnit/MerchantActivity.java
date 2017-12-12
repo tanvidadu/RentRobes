@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.razorpay.Checkout;
@@ -16,11 +17,28 @@ import org.json.JSONObject;
 public class MerchantActivity extends AppCompatActivity implements PaymentResultListener {
 
     private static final String TAG = MerchantActivity.class.getSimpleName(); ;
-
+    private Robes RobeSelected = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_merchant);
+
+        //Receive object
+
+        try {
+            Bundle data = getIntent().getExtras();
+            RobeSelected = (Robes) data.getParcelable("PaymentOfRobe");
+
+            Log.i(TAG, "onCreate: " + RobeSelected.getName_of_product());
+        }catch (Exception e){
+            Log.i(TAG , "No Robes received   :" + e);
+        }
+
+
+        TextView textView = (TextView) findViewById(R.id.payment_name);
+        textView.setText(RobeSelected.getName_of_product());
+        textView = (TextView) findViewById(R.id.payment_price);
+        textView.setText(Float.toString(RobeSelected.getCost_price()));
 
          /*
          To ensure faster loading of the Checkout form,
@@ -55,7 +73,7 @@ public class MerchantActivity extends AppCompatActivity implements PaymentResult
             //You can omit the image option to fetch the image from dashboard
             options.put("image", "https://rzp-mobile.s3.amazonaws.com/images/rzp.png");
             options.put("currency", "INR");
-            options.put("amount", "100");
+            options.put("amount", RobeSelected.getCost_price() * 100);
 
             JSONObject preFill = new JSONObject();
             preFill.put("email", "test@razorpay.com");

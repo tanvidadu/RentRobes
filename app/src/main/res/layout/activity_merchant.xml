@@ -68,7 +68,7 @@
                 android:paddingTop="0dp"
                 android:paddingBottom="5dp"
                 android:textSize="20sp"
-                android:text="Razorpay T-Shirt"
+                android:id="@+id/payment_name"
                 />
 
             <TextView
@@ -78,7 +78,7 @@
                 android:paddingTop="0dp"
                 android:paddingBottom="0dp"
                 android:textSize="12sp"
-                android:text="INR 1.00"
+                android:id="@+id/payment_price"
                 />
 
             <TextView
@@ -89,7 +89,7 @@
                 android:paddingBottom="0dp"
                 android:textSize="12sp"
                 android:textStyle="italic"
-                android:text="This is a real transaction"
+                android:text=" Click Proceed To Continue Transaction"
                 />
 
             <Button
@@ -104,7 +104,7 @@
                 android:background="@drawable/green_button"
                 android:textSize="14sp"
                 android:textColor="#fcfcfc"
-                android:text="Purchase"
+                android:text="PROCEED"
                 />
 
         </LinearLayout>
