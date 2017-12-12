@@ -37,6 +37,7 @@ public class TypeWiseList extends AppCompatActivity implements TypeWiseListFragm
     public void onFragmentInteraction(int position) {
         Toast.makeText(TypeWiseList.this,"position " + position  , Toast.LENGTH_SHORT).show();
         Intent i = new Intent(TypeWiseList.this , ListItem.class);
+        i.putExtra("ListItemSelected" , robeToBeDisplayed.get(position));
         startActivity(i);
 
     }
