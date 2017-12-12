@@ -2,12 +2,15 @@ package com.example.tanvidadu.learnit;
 
 import android.app.FragmentManager;
 import android.content.Intent;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
@@ -33,6 +36,7 @@ public class TypeWiseList extends AppCompatActivity implements TypeWiseListFragm
     @Override
     public void onFragmentInteraction(int position) {
         Toast.makeText(TypeWiseList.this,"position " + position  , Toast.LENGTH_SHORT).show();
+
     }
 
     @Override

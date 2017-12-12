@@ -74,6 +74,7 @@ public class TypeWiseListFragment extends Fragment  {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                     mListener.onFragmentInteraction(position);
+
                 }
             });
 
@@ -110,12 +111,12 @@ public class TypeWiseListFragment extends Fragment  {
 
 
 
-    /*@Override
+    @Override
     public void onDetach() {
         super.onDetach();
         mListener = null;
     }
-*/
+
     /**
      * This interface must be implemented by activities that contain this
      * fragment to allow an interaction in this fragment to be communicated
