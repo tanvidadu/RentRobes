@@ -5,10 +5,48 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.example.tanvidadu.learnit.PickDate">
-    <TextView
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Starting Date"
+            android:layout_margin="32dp"
+            android:onClick="showDatePickerDialog"
+            android:id="@+id/StartDate"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Lock Date"
+            android:layout_margin="32dp"
+            android:id="@+id/LockStartDate"/>
+    </LinearLayout>
+     <LinearLayout
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content">
+         <Button
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:text="Ending Date"
+             android:layout_margin="32dp"
+             android:onClick="showDatePickerDialog"
+             android:id="@+id/EndDate"/>
+         <Button
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:text="Lock Date"
+             android:layout_margin="32dp"
+             android:id="@+id/LockEndDate"/>
+     </LinearLayout>
+
+    <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/Date_selected"/>
-
+        android:text="Proceed"
+        android:layout_margin="32dp"
+        android:onClick="showDatePickerDialog"
+        android:id="@+id/ProceedDates"/>
 </LinearLayout>

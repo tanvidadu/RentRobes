@@ -56,7 +56,7 @@ public class Date {
         int days = 0;
         if( syear == eyear){
             if(smonth == emonth){
-                days += emonth-smonth + 1;
+                days += edate-sdate + 1;
             } else {
                 for (int i = smonth + 1 ; i < emonth; i++){
                     days += daysinMonth[i];
