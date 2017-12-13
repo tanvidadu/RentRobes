@@ -25,11 +25,7 @@
         <activity android:name=".LoginActivity" />
         <activity android:name=".TypeWiseList" />
         <activity android:name=".Catalog">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".Settings" />
         <activity android:name=".ListItem" />
@@ -38,7 +34,14 @@
             android:name="com.razorpay.ApiKey"
             android:value="rzp_test_ivmMqQHZoRea5L" />
 
-        <activity android:name=".MerchantActivity"></activity>
+        <activity android:name=".MerchantActivity" />
+        <activity android:name=".PickDate">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
