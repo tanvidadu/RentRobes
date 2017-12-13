@@ -18,10 +18,28 @@ import java.util.ArrayList;
 
 public class Catalog extends AppCompatActivity  {
 
+    private static final String TAG = Catalog.class.getName() ;
+    private int sDate , sMonth , sYear;
+    private int eDate , eMonth , eYear;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_catalog);
+
+        //Extracting dates from Intent
+        try {
+            Bundle data = getIntent().getExtras();
+            sDate = data.getInt("StartDate");
+            sMonth = data.getInt("StartMonth");
+            sYear = data.getInt("StartYear");
+            eDate = data.getInt("EndDate");
+            eMonth = data.getInt("EndMonth");
+            eYear = data.getInt("EndYear");
+            Log.i("data" , sDate + " " + sMonth + " " + sYear);
+        }catch (Exception e){
+            Log.i(TAG , "No Date received   :" + e);
+        }
 
         ArrayList<String> catalog = new ArrayList<String>();
         catalog.add("DRESS");
@@ -44,6 +62,12 @@ public class Catalog extends AppCompatActivity  {
                 //based on item add info to intent
                 String temp = (String) item;
                 intent.putExtra("CatalogSelected" , temp);
+                intent.putExtra("StartDate" , sDate);
+                intent.putExtra("StartMonth" , sMonth);
+                intent.putExtra("StartYear" , sYear);
+                intent.putExtra("EndDate" , eDate);
+                intent.putExtra("EndMonth" , eMonth);
+                intent.putExtra("EndYear" , eYear);
                 startActivity(intent);
             }
 

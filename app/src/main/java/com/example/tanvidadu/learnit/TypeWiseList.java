@@ -28,10 +28,13 @@ import java.util.ArrayList;
 
 public class TypeWiseList extends AppCompatActivity implements TypeWiseListFragment.OnFragmentInteractionListener {
 
+    private static final String TAG = TypeWiseList.class.getName();
     private FirebaseDatabase firebaseDatabase ;
     private DatabaseReference databaseReference;
     ArrayList<Robes> robeToBeDisplayed= new ArrayList<Robes>();
-
+    private int sDate , sMonth , sYear;
+    private int eDate , eMonth , eYear;
+    private String CatalogSelected;
 
     @Override
     public void onFragmentInteraction(int position) {
@@ -46,14 +49,26 @@ public class TypeWiseList extends AppCompatActivity implements TypeWiseListFragm
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_type_wise_list);
-
-       
+        
+       // Extract Information from Intent
+        try {
+            Bundle data = getIntent().getExtras();
+            sDate = data.getInt("StartDate");
+            sMonth = data.getInt("StartMonth");
+            sYear = data.getInt("StartYear");
+            eDate = data.getInt("EndDate");
+            eMonth = data.getInt("EndMonth");
+            eYear = data.getInt("EndYear");
+            CatalogSelected = data.getString("CatalogSelected");
+            Log.i("data" , sDate + " " + sMonth + " " + sYear);
+        }catch (Exception e){
+            Log.i(TAG , "No Date received   :" + e);
+        }
 
         firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference().child("robeToBeSold");
 
-        String CatalogSelected = getIntent().getExtras().getString("CatalogSelected");
-        Log.i("CatalogSelected" , "CatalogSelected" + CatalogSelected);
+        
 
 
         Query clothToBeDisplayed = databaseReference.orderByChild("name_of_product").equalTo("gloves");

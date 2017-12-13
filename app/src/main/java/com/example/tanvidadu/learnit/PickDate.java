@@ -1,6 +1,7 @@
 package com.example.tanvidadu.learnit;
 
 import android.app.DialogFragment;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -24,6 +25,16 @@ public class PickDate extends AppCompatActivity {
            public void onClick(View v) {
                Date date = new Date();
                date.setDates(sDate , sMonth, sYear , eDate,eMonth,eYear);
+
+               Intent i = new Intent(PickDate.this , Catalog.class);
+               i.putExtra("StartDate" , sDate);
+               i.putExtra("StartMonth" , sMonth);
+               i.putExtra("StartYear" , sYear);
+               i.putExtra("EndDate" , eDate);
+               i.putExtra("EndMonth" , eMonth);
+               i.putExtra("EndYear" , eYear);
+               startActivity(i);
+
            }
        });
 
