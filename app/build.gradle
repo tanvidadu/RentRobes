@@ -30,6 +30,7 @@ dependencies {
     compile "com.github.danielnilsson9:color-picker-view:1.4.0@aar"
     compile 'com.google.firebase:firebase-database:11.4.2'
     compile 'com.google.firebase:firebase-auth:11.4.2'
+    compile 'com.google.firebase:firebase-ads:11.4.2'
     compile 'com.firebaseui:firebase-ui-auth:3.1.0'
     compile 'com.facebook.android:facebook-android-sdk:4.27.0'
     compile 'com.razorpay:checkout:1.4.1'

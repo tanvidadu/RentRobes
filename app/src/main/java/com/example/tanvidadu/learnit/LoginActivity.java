@@ -184,7 +184,7 @@ public class LoginActivity extends AppCompatActivity {
 
     // to check whether firebase contains that user or not
     public boolean CheckinFirebase( String userEmail){
-        Query checkUser = databaseReference.orderByChild("email").equalTo(userEmail);
+        Query checkUser = databaseReference.orderByChild("email").equalTo(CustomerPresent.getCustomerEmail());
 
         checkUser.addChildEventListener(new ChildEventListener() {
             @Override
