@@ -31,7 +31,7 @@ public class TypeWiseList extends AppCompatActivity implements TypeWiseListFragm
     private static final String TAG = TypeWiseList.class.getName();
     private FirebaseDatabase firebaseDatabase ;
     private DatabaseReference databaseReference;
-    ArrayList<Robes> robeToBeDisplayed= new ArrayList<Robes>();
+    ArrayList<RobesForRent> robeToBeDisplayed= new ArrayList<>();
     private int sDate , sMonth , sYear;
     private int eDate , eMonth , eYear;
     private String CatalogSelected;
@@ -74,7 +74,7 @@ public class TypeWiseList extends AppCompatActivity implements TypeWiseListFragm
         databaseReference.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                Robes temp = dataSnapshot.getValue(Robes.class);
+                RobesForRent temp = dataSnapshot.getValue(RobesForRent.class);
                 addRobes(temp);
 
             }
@@ -112,7 +112,7 @@ public class TypeWiseList extends AppCompatActivity implements TypeWiseListFragm
 
     }
 
-    private void addRobes(Robes temp) {
+    private void addRobes(RobesForRent temp) {
         robeToBeDisplayed.add(temp);
         Log.i("dress extracted" , "brand is : "+ robeToBeDisplayed.isEmpty());
     }

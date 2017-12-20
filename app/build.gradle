@@ -34,5 +34,6 @@ dependencies {
     compile 'com.firebaseui:firebase-ui-auth:3.1.0'
     compile 'com.facebook.android:facebook-android-sdk:4.27.0'
     compile 'com.razorpay:checkout:1.4.1'
+    compile 'com.squareup.picasso:picasso:2.5.2'
 }
 apply plugin: 'com.google.gms.google-services'

@@ -25,7 +25,7 @@ import java.util.TimerTask;
 public class TypeWiseListFragment extends Fragment  {
 
     private OnFragmentInteractionListener mListener;
-    private ArrayList<Robes> robeToBeDisplayed;
+    private ArrayList<RobesForRent> robeToBeDisplayed;
 
 
 
@@ -132,7 +132,7 @@ public class TypeWiseListFragment extends Fragment  {
         void onFragmentInteraction(int position);
     }
 
-    public void setRobeToBeDisplayed(ArrayList<Robes> robeToBeDisplayed) {
+    public void setRobeToBeDisplayed(ArrayList<RobesForRent> robeToBeDisplayed) {
         this.robeToBeDisplayed = robeToBeDisplayed;
     }
 
