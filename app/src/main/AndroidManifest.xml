@@ -7,8 +7,9 @@
         android:required="true" />
 
     <uses-permission android:name="android.permission.RECEIVE_SMS" />
-    <permission android:name="android.permission.INTERNET"/>
-    <permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+
+    <permission android:name="android.permission.INTERNET" />
+    <permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:allowBackup="true"
@@ -17,8 +18,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <meta-data android:name="com.google.android.gms.version"
+        <meta-data
+            android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
+
         <activity android:name=".MainActivity" />
         <activity
             android:name=".SellOption"
@@ -26,16 +29,11 @@
         <activity android:name=".GenerateRequest" />
         <activity android:name=".generate_request_address" />
         <activity android:name=".RequestSummary" />
-        <activity android:name=".LoginActivity" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity android:name=".TypeWiseList" />
-        <activity android:name=".Catalog">
+        <activity android:name=".LoginActivity">
 
         </activity>
+        <activity android:name=".TypeWiseList" />
+        <activity android:name=".Catalog"></activity>
         <activity android:name=".Settings" />
         <activity android:name=".ListItem" />
 
@@ -44,8 +42,13 @@
             android:value="rzp_test_ivmMqQHZoRea5L" />
 
         <activity android:name=".MerchantActivity" />
-        <activity android:name=".PickDate">
+        <activity android:name=".PickDate"></activity>
+        <activity android:name=".Temporary">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
     </application>
 

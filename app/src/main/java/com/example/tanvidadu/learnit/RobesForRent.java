@@ -3,6 +3,8 @@ package com.example.tanvidadu.learnit;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.util.ArrayList;
+
 /**
  * Created by Dell on 12/20/2017.
  */
@@ -13,8 +15,12 @@ public class RobesForRent implements Parcelable {
     private float Price;
     private int size;
     private String color;
-    private Date calenderAvailable;
+    private ArrayList<BookingDate> calenderAvailable;
     private String url;
+
+    public RobesForRent() {
+
+    }
 
     public void setName(String name) {
         Name = name;
@@ -40,7 +46,7 @@ public class RobesForRent implements Parcelable {
         Brand = brand;
     }
 
-    public Date getCalenderAvailable() {
+    public ArrayList<BookingDate> getCalenderAvailable() {
         return calenderAvailable;
     }
 
@@ -60,7 +66,7 @@ public class RobesForRent implements Parcelable {
         return url;
     }
 
-    public void setCalenderAvailable(Date calenderAvailable) {
+    public void setCalenderAvailable(ArrayList<BookingDate> calenderAvailable) {
         this.calenderAvailable = calenderAvailable;
     }
 
@@ -85,7 +91,7 @@ public class RobesForRent implements Parcelable {
        dest.writeFloat(Price);
        dest.writeInt(size);
        dest.writeString(color);
-       dest.writeParcelable(calenderAvailable, flags);
+       dest.writeList(calenderAvailable);
        dest.writeString(url);
     }
 
@@ -95,7 +101,7 @@ public class RobesForRent implements Parcelable {
         Price = in.readFloat();
         size = in.readInt();
         color = in.readString();
-        calenderAvailable = in.readParcelable(getClass().getClassLoader());
+        calenderAvailable = in.readArrayList(null);
         url = in.readString();
     }
     public static final Parcelable.Creator<RobesForRent> CREATOR =

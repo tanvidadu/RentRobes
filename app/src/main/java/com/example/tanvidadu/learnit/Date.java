@@ -12,15 +12,25 @@ import static java.lang.Math.abs;
 
 public class Date implements Parcelable {
 
-    private boolean [] dates = new boolean[366];
-    private boolean leapyear = false;
+    private int [] dates = new int[366];
+    private int leapyear = 0;
     private int year ;
     private int [] daysinMonth = { 0, 31 , 28 , 31,30, 31 , 30, 31,31,30,31,30,31};
 
     Date(){
         for( int i = 0; i <= 365 ; i++){
-            dates[i] = false;
+            dates[i] = 0;
         }
+    }
+
+    public int getLeapyear() {
+        return leapyear;
+    }
+
+
+
+    public void setLeapyear(int leapyear) {
+        this.leapyear = leapyear;
     }
 
     public void setYear(int year) {
@@ -37,18 +47,18 @@ public class Date implements Parcelable {
 
 
             for( int i = 0 ; i < days ; i++ ) {
-                dates[(sindex + i)%365] = true;
+                dates[(sindex + i)%365] = 1;
             }
             if( syear == eyear && syear %4 == 0){
                 if( (smonth <= 2 && emonth > 2) ||( smonth <= 2 && emonth == 2 && edate == 29) ){
-                    leapyear = true;
+                    leapyear = 1;
                     ///Log.i("date" , "no of days " + days +"  " +  leapyear + " starting index " + sindex);
                 }
             } else {
                 if( syear%4 == 0 && smonth <= 2){
-                    leapyear = true;
+                    leapyear = 1;
                 } else if (eyear %4 == 0 && ((emonth == 2 && edate == 29) || emonth > 2) ){
-                    leapyear = true;
+                    leapyear = 1;
                 }
             }
         Log.i("date" , "no of days " + days +"  " +  leapyear + " starting index " + sindex);
@@ -86,15 +96,15 @@ public class Date implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeBooleanArray(dates);
-        dest.writeByte((byte) (leapyear ? 1 : 0));
+        dest.writeIntArray(dates);
+        dest.writeInt(leapyear);
         dest.writeInt(year);
         dest.writeIntArray(daysinMonth);
     }
 
     public Date ( Parcel in){
-        dates = in.createBooleanArray();
-        leapyear = in.readByte() != 0;
+        dates = in.createIntArray();
+        leapyear = in.readInt();
         year = in.readInt();
         daysinMonth = in.createIntArray();
     }
