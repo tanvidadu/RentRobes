@@ -66,13 +66,12 @@ public class TypeWiseList extends AppCompatActivity implements TypeWiseListFragm
         }
 
         firebaseDatabase = FirebaseDatabase.getInstance();
-        databaseReference = firebaseDatabase.getReference().child("robeToBeSold");
+        databaseReference = firebaseDatabase.getReference().child("robeForRent").child("dress");
 
         
 
 
-        Query clothToBeDisplayed = databaseReference.orderByChild("name_of_product").equalTo("gloves");
-        clothToBeDisplayed.addChildEventListener(new ChildEventListener() {
+        databaseReference.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 Robes temp = dataSnapshot.getValue(Robes.class);

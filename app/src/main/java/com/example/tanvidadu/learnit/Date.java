@@ -11,83 +11,65 @@ import static java.lang.Math.abs;
  */
 
 public class Date implements Parcelable {
+   private int sDate;
+   private int sMonth;
+   private int sYear;
+   private int eDate;
+   private int eMonth;
+   private int eYear;
 
-    private int [] dates = new int[366];
-    private int leapyear = 0;
-    private int year ;
-    private int [] daysinMonth = { 0, 31 , 28 , 31,30, 31 , 30, 31,31,30,31,30,31};
+    public Date() {
 
-    Date(){
-        for( int i = 0; i <= 365 ; i++){
-            dates[i] = 0;
-        }
     }
 
-    public int getLeapyear() {
-        return leapyear;
+    public int geteDate() {
+        return eDate;
     }
 
-
-
-    public void setLeapyear(int leapyear) {
-        this.leapyear = leapyear;
+    public int geteMonth() {
+        return eMonth;
     }
 
-    public void setYear(int year) {
-        this.year = year;
+    public int geteYear() {
+        return eYear;
     }
 
-    public int getYear() {
-        return year;
+    public int getsDate() {
+        return sDate;
     }
 
-    public void setDates(int  sdate , int smonth , int syear , int edate , int emonth , int eyear) {
-        int days = CalculateDays(sdate,smonth,syear,edate,emonth,eyear);
-        int sindex = CalculateDays(1 , 1,syear , sdate,smonth,syear);
-
-
-            for( int i = 0 ; i < days ; i++ ) {
-                dates[(sindex + i)%365] = 1;
-            }
-            if( syear == eyear && syear %4 == 0){
-                if( (smonth <= 2 && emonth > 2) ||( smonth <= 2 && emonth == 2 && edate == 29) ){
-                    leapyear = 1;
-                    ///Log.i("date" , "no of days " + days +"  " +  leapyear + " starting index " + sindex);
-                }
-            } else {
-                if( syear%4 == 0 && smonth <= 2){
-                    leapyear = 1;
-                } else if (eyear %4 == 0 && ((emonth == 2 && edate == 29) || emonth > 2) ){
-                    leapyear = 1;
-                }
-            }
-        Log.i("date" , "no of days " + days +"  " +  leapyear + " starting index " + sindex);
+    public int getsMonth() {
+        return sMonth;
     }
 
-    private int CalculateDays(int sdate, int smonth, int syear, int edate, int emonth, int eyear) {
-        int days = 0;
-        if( syear == eyear){
-            if(smonth == emonth){
-                days += edate-sdate + 1;
-            } else {
-                for (int i = smonth + 1 ; i < emonth; i++){
-                    days += daysinMonth[i];
-                }
-                days += daysinMonth[smonth] - sdate + 1;
-                days += edate;
-            }
-        } else{
-            for( int i = smonth+1 ; i <= 12 ; i++){
-                days += daysinMonth[i];
-            }
-            days += daysinMonth[smonth] - sdate+1;
-            for (int i = 1 ; i < emonth ; i++){
-                days += daysinMonth[i];
-            }
-            days += edate;
-        }
-        return days;
+    public int getsYear() {
+        return sYear;
     }
+
+    public void seteDate(int eDate) {
+        this.eDate = eDate;
+    }
+
+    public void seteMonth(int eMonth) {
+        this.eMonth = eMonth;
+    }
+
+    public void seteYear(int eYear) {
+        this.eYear = eYear;
+    }
+
+    public void setsDate(int sDate) {
+        this.sDate = sDate;
+    }
+
+    public void setsMonth(int sMonth) {
+        this.sMonth = sMonth;
+    }
+
+    public void setsYear(int sYear) {
+        this.sYear = sYear;
+    }
+
 
     @Override
     public int describeContents() {
@@ -96,17 +78,21 @@ public class Date implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeIntArray(dates);
-        dest.writeInt(leapyear);
-        dest.writeInt(year);
-        dest.writeIntArray(daysinMonth);
+        dest.writeInt(sDate);
+        dest.writeInt(sMonth);
+        dest.writeInt(sYear);
+        dest.writeInt(eDate);
+        dest.writeInt(eMonth);
+        dest.writeInt(eYear);
     }
 
     public Date ( Parcel in){
-        dates = in.createIntArray();
-        leapyear = in.readInt();
-        year = in.readInt();
-        daysinMonth = in.createIntArray();
+        sDate = in.readInt();
+        sMonth = in.readInt();
+        sYear = in.readInt();
+        eDate = in.readInt();
+        eMonth = in.readInt();
+        eYear = in.readInt();
     }
     public static final Parcelable.Creator<Date> CREATOR =
             new Parcelable.Creator<Date>(){
@@ -120,4 +106,13 @@ public class Date implements Parcelable {
                     return new Date[size];
                 }
             };
+
+    public void setDates(int sDate, int sMonth, int sYear, int eDate, int eMonth, int eYear) {
+       this.sDate = sDate;
+       this.sMonth = sMonth;
+       this.sYear = sYear;
+       this.eDate = eDate;
+       this.eMonth = eMonth;
+       this.eYear = eYear;
+    }
 }

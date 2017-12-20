@@ -44,14 +44,14 @@ public class RobesAdapter extends ArrayAdapter<Robes> {
         textView.setText(currentRobe.getBrand());
         textView = (TextView) listItemView.findViewById(R.id.List_item_Price);
         textView.setText(Float.toString(currentRobe.getCost_price()));
-        ImageView imageView= (ImageView) listItemView.findViewById(R.id.List_item_Image);
+        /*ImageView imageView= (ImageView) listItemView.findViewById(R.id.List_item_Image);
         try {
             Bitmap imageBitmap = decodeFromFirebaseBase64(currentRobe.getImage_url());
             imageView.setImageBitmap(imageBitmap);
         } catch (IOException e) {
             e.printStackTrace();
 
-        }
+        }*/
         return listItemView;
     }
 }

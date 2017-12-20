@@ -33,7 +33,13 @@
 
         </activity>
         <activity android:name=".TypeWiseList" />
-        <activity android:name=".Catalog"></activity>
+        <activity android:name=".Catalog">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".Settings" />
         <activity android:name=".ListItem" />
 
@@ -44,11 +50,7 @@
         <activity android:name=".MerchantActivity" />
         <activity android:name=".PickDate"></activity>
         <activity android:name=".Temporary">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
     </application>
 
