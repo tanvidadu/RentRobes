@@ -255,7 +255,7 @@ public class LoginActivity extends AppCompatActivity {
             ViewGroup parent = (ViewGroup) myView.getParent();
             parent.removeView(myView);
         } catch (NullPointerException e){
-            
+
         }
     }
 

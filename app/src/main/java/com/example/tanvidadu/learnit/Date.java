@@ -1,5 +1,7 @@
 package com.example.tanvidadu.learnit;
 
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.util.Log;
 
 import static java.lang.Math.abs;
@@ -8,7 +10,7 @@ import static java.lang.Math.abs;
  * Created by Dell on 12/13/2017.
  */
 
-public class Date {
+public class Date implements Parcelable {
 
     private boolean [] dates = new boolean[366];
     private boolean leapyear = false;
@@ -76,4 +78,36 @@ public class Date {
         }
         return days;
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeBooleanArray(dates);
+        dest.writeByte((byte) (leapyear ? 1 : 0));
+        dest.writeInt(year);
+        dest.writeIntArray(daysinMonth);
+    }
+
+    public Date ( Parcel in){
+        dates = in.createBooleanArray();
+        leapyear = in.readByte() != 0;
+        year = in.readInt();
+        daysinMonth = in.createIntArray();
+    }
+    public static final Parcelable.Creator<Date> CREATOR =
+            new Parcelable.Creator<Date>(){
+
+                public Date createFromParcel(Parcel in ){
+                    return new Date(in);
+                }
+
+                @Override
+                public Date[] newArray(int size) {
+                    return new Date[size];
+                }
+            };
 }
