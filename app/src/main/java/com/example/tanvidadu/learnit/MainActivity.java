@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
         mRentOption.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(MainActivity.this , PickDate.class);
+                Intent i = new Intent(MainActivity.this , Catalog.class);
                 startActivity(i);
             }
         });

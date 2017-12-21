@@ -24,7 +24,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 
-import java.util.ArrayList;
+import java.util.*;
 
 public class TypeWiseList extends AppCompatActivity implements TypeWiseListFragment.OnFragmentInteractionListener {
 
@@ -32,9 +32,10 @@ public class TypeWiseList extends AppCompatActivity implements TypeWiseListFragm
     private FirebaseDatabase firebaseDatabase ;
     private DatabaseReference databaseReference;
     ArrayList<RobesForRent> robeToBeDisplayed= new ArrayList<>();
-    private int sDate , sMonth , sYear;
-    private int eDate , eMonth , eYear;
+
     private String CatalogSelected;
+
+
 
     @Override
     public void onFragmentInteraction(int position) {
@@ -53,17 +54,13 @@ public class TypeWiseList extends AppCompatActivity implements TypeWiseListFragm
        // Extract Information from Intent
         try {
             Bundle data = getIntent().getExtras();
-            sDate = data.getInt("StartDate");
-            sMonth = data.getInt("StartMonth");
-            sYear = data.getInt("StartYear");
-            eDate = data.getInt("EndDate");
-            eMonth = data.getInt("EndMonth");
-            eYear = data.getInt("EndYear");
+
             CatalogSelected = data.getString("CatalogSelected");
-            Log.i("data" , sDate + " " + sMonth + " " + sYear);
+
         }catch (Exception e){
             Log.i(TAG , "No Date received   :" + e);
         }
+
 
         firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference().child("robeForRent").child("dress");
@@ -74,9 +71,9 @@ public class TypeWiseList extends AppCompatActivity implements TypeWiseListFragm
         databaseReference.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                RobesForRent temp = dataSnapshot.getValue(RobesForRent.class);
-                addRobes(temp);
-
+            RobesForRent temp = dataSnapshot.getValue(RobesForRent.class);
+            temp.setUniqueCode(dataSnapshot.getKey());
+                 addRobes(temp);
             }
 
             @Override
@@ -112,9 +109,12 @@ public class TypeWiseList extends AppCompatActivity implements TypeWiseListFragm
 
     }
 
+
+
+
     private void addRobes(RobesForRent temp) {
         robeToBeDisplayed.add(temp);
-        Log.i("dress extracted" , "brand is : "+ robeToBeDisplayed.isEmpty());
+        //Log.i("dress extracted" , "brand is : "+ robeToBeDisplayed.isEmpty());
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {

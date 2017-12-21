@@ -17,6 +17,7 @@ public class RobesForRent implements Parcelable {
     private String color;
     private ArrayList<BookingDate> calenderAvailable;
     private String url;
+    private String UniqueCode;
 
     public RobesForRent() {
 
@@ -70,6 +71,14 @@ public class RobesForRent implements Parcelable {
         this.calenderAvailable = calenderAvailable;
     }
 
+    public String getUniqueCode() {
+        return UniqueCode;
+    }
+
+    public void setUniqueCode(String uniqueCode) {
+        UniqueCode = uniqueCode;
+    }
+
     public void setColor(String color) {
         this.color = color;
     }
@@ -93,6 +102,7 @@ public class RobesForRent implements Parcelable {
        dest.writeString(color);
        dest.writeList(calenderAvailable);
        dest.writeString(url);
+       dest.writeString(UniqueCode);
     }
 
     public RobesForRent( Parcel in){
@@ -103,6 +113,7 @@ public class RobesForRent implements Parcelable {
         color = in.readString();
         calenderAvailable = in.readArrayList(null);
         url = in.readString();
+        UniqueCode = in.readString();
     }
     public static final Parcelable.Creator<RobesForRent> CREATOR =
             new Parcelable.Creator<RobesForRent>(){

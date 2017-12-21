@@ -17,6 +17,7 @@ public class Date implements Parcelable {
    private int eDate;
    private int eMonth;
    private int eYear;
+    private int [] daysinMonth = { 0, 31 , 28 , 31,30, 31 , 30, 31,31,30,31,30,31};
 
     public Date() {
 
@@ -114,5 +115,46 @@ public class Date implements Parcelable {
        this.eDate = eDate;
        this.eMonth = eMonth;
        this.eYear = eYear;
+    }
+
+    public int CalculateDays(int sdate, int smonth, int syear, int edate, int emonth, int eyear) {
+        int days = 0;
+        if( syear == eyear){
+            if(smonth == emonth){
+                days += edate-sdate + 1;
+            } else {
+                for (int i = smonth + 1 ; i < emonth; i++){
+                    days += daysinMonth[i];
+                }
+                days += daysinMonth[smonth] - sdate + 1;
+                days += edate;
+            }
+        } else{
+            for( int i = smonth+1 ; i <= 12 ; i++){
+                days += daysinMonth[i];
+            }
+            days += daysinMonth[smonth] - sdate+1;
+            for (int i = 1 ; i < emonth ; i++){
+                days += daysinMonth[i];
+            }
+            days += edate;
+        }
+        boolean leapyear = false;
+        if( syear == eyear && syear %4 == 0) {
+            if ((smonth <= 2 && emonth > 2) || (smonth <= 2 && emonth == 2 && edate == 29)) {
+                leapyear = true;
+                ///Log.i("date" , "no of days " + days +"  " +  leapyear + " starting index " + sindex);
+            }
+        }else {
+            if( syear%4 == 0 && smonth <= 2){
+                leapyear = true;
+            } else if (eyear %4 == 0 && ((emonth == 2 && edate == 29) || emonth > 2) ){
+                leapyear = true;
+            }
+        }
+        if(leapyear){
+            days++;
+        }
+        return days;
     }
 }

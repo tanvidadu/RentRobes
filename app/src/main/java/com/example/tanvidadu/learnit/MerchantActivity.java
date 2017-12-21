@@ -9,6 +9,8 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.razorpay.Checkout;
 import com.razorpay.PaymentResultListener;
 
@@ -17,7 +19,8 @@ import org.json.JSONObject;
 public class MerchantActivity extends AppCompatActivity implements PaymentResultListener {
 
     private static final String TAG = MerchantActivity.class.getSimpleName(); ;
-    private Robes RobeSelected = null;
+    private RobesForRent RobeSelected = null;
+    private BookingDate bookingDate = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,18 +30,19 @@ public class MerchantActivity extends AppCompatActivity implements PaymentResult
 
         try {
             Bundle data = getIntent().getExtras();
-            RobeSelected = (Robes) data.getParcelable("PaymentOfRobe");
+            RobeSelected = (RobesForRent) data.getParcelable("RobeFinalized");
+            bookingDate = (BookingDate) data.getParcelable("BookingDates");
 
-            Log.i(TAG, "onCreate: " + RobeSelected.getName_of_product());
+            Log.i(TAG, "onCreate: " + RobeSelected.getName());
         }catch (Exception e){
             Log.i(TAG , "No Robes received   :" + e);
         }
 
 
         TextView textView = (TextView) findViewById(R.id.payment_name);
-        textView.setText(RobeSelected.getName_of_product());
+        textView.setText(RobeSelected.getName());
         textView = (TextView) findViewById(R.id.payment_price);
-        textView.setText(Float.toString(RobeSelected.getCost_price()));
+        textView.setText(Float.toString(RobeSelected.getPrice()));
 
          /*
          To ensure faster loading of the Checkout form,
@@ -73,7 +77,7 @@ public class MerchantActivity extends AppCompatActivity implements PaymentResult
             //You can omit the image option to fetch the image from dashboard
             options.put("image", "https://rzp-mobile.s3.amazonaws.com/images/rzp.png");
             options.put("currency", "INR");
-            options.put("amount", RobeSelected.getCost_price() * 100);
+            options.put("amount", RobeSelected.getPrice() * 100*CustomerPresent.no_of_days);
 
             JSONObject preFill = new JSONObject();
             preFill.put("email", "test@razorpay.com");
@@ -93,6 +97,9 @@ public class MerchantActivity extends AppCompatActivity implements PaymentResult
     public void onPaymentSuccess(String razorpayPaymentID) {
         try {
             Toast.makeText(this, "Payment Successful: " + razorpayPaymentID, Toast.LENGTH_SHORT).show();
+            FirebaseDatabase firebaseDatabase  = FirebaseDatabase.getInstance();
+            DatabaseReference databaseReference = firebaseDatabase.getReference().child("BookedDates").child(RobeSelected.getUniqueCode());
+            databaseReference.push().setValue(bookingDate);
         } catch (Exception e) {
             Log.e(TAG, "Exception in onPaymentSuccess", e);
         }

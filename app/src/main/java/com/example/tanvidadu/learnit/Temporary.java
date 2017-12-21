@@ -61,8 +61,12 @@ public class Temporary extends AppCompatActivity {
 
     private void AddBookedValue(String key) {
         BookingDate bookingDate = new BookingDate();
-        bookingDate.setStart_date("12/1/2018");
-        bookingDate.setEnd_date("14/1/2018");
+        bookingDate.setsDate(12);
+        bookingDate.setsMonth(1);
+        bookingDate.setsYear(2018);
+        bookingDate.seteDate(14);
+        bookingDate.seteMonth(1);
+        bookingDate.setEyear(2018);
         dateReference = firebaseDatabase.getReference().child("BookedDates").child(key);
         dateReference.push().setValue(bookingDate);
     }

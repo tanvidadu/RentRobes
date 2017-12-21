@@ -9,8 +9,11 @@ import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
 
@@ -22,39 +25,35 @@ public class ListItem extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_item);
-        Robes RobeSelected = null;
+        RobesForRent RobeSelected = null;
         try {
             Bundle data = getIntent().getExtras();
-             RobeSelected = (Robes) data.getParcelable("ListItemSelected");
+             RobeSelected = (RobesForRent) data.getParcelable("ListItemSelected");
 
-            Log.i(TAG, "onCreate: " + RobeSelected.getName_of_product());
+
+            Log.i(TAG, "onCreate: " + RobeSelected.getName());
         }catch (Exception e){
             Log.i(TAG , "No Robes received   :" + e);
         }
         TextView textView = (TextView) findViewById(R.id.list_item_selected_name);
-        textView.setText(RobeSelected.getName_of_product());
+        textView.setText(RobeSelected.getName());
         textView = (TextView) findViewById(R.id.list_item_selected_brand);
         textView.setText(RobeSelected.getBrand());
         textView = (TextView) findViewById(R.id.list_item_selected_Color);
-        textView.setText(RobeSelected.getColour());
+        textView.setText(RobeSelected.getColor());
         textView = (TextView) findViewById(R.id.list_item_selected_Size);
         textView.setText(Integer.toString(RobeSelected.getSize()));
         textView = (TextView) findViewById(R.id.list_item_selected_Price);
-        textView.setText(Float.toString(RobeSelected.getCost_price()));
+        textView.setText(Float.toString(RobeSelected.getPrice()));
         ImageView imageView = (ImageView) findViewById(R.id.list_item_selected_imageId);
 
-        try{
-            Bitmap bitmap = decodeFromFirebaseBase64(RobeSelected.getImage_url());
-            imageView.setImageBitmap(bitmap);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        Picasso.with(this).load(RobeSelected.getUrl()).into(imageView);
         Button RentPayment = (Button) findViewById(R.id.Payment);
-        final Robes finalRobeSelected = RobeSelected;
+        final RobesForRent finalRobeSelected = RobeSelected;
         RentPayment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(ListItem.this , MerchantActivity.class );
+                Intent i = new Intent(ListItem.this , PickDate.class );
                 i.putExtra("PaymentOfRobe" , finalRobeSelected);
                 startActivity(i);
             }
@@ -62,10 +61,7 @@ public class ListItem extends AppCompatActivity {
 
     }
 
-    public static Bitmap decodeFromFirebaseBase64(String image) throws IOException {
-        byte[] decodedByteArray = android.util.Base64.decode(image, Base64.DEFAULT);
-        return BitmapFactory.decodeByteArray(decodedByteArray, 0, decodedByteArray.length);
-    }
+
    
 
 }

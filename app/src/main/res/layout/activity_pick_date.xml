@@ -41,6 +41,13 @@
              android:layout_margin="32dp"
              android:id="@+id/LockEndDate"/>
      </LinearLayout>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="CHECK AVAILABILITY"
+        android:layout_margin="32dp"
+        android:onClick="showDatePickerDialog"
+        android:id="@+id/checkAvailablity"/>
 
     <Button
         android:layout_width="wrap_content"

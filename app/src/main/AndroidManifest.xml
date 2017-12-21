@@ -22,7 +22,9 @@
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
 
-        <activity android:name=".MainActivity" />
+        <activity android:name=".MainActivity" >
+
+        </activity>
         <activity
             android:name=".SellOption"
             android:label="SELL" />
@@ -30,15 +32,15 @@
         <activity android:name=".generate_request_address" />
         <activity android:name=".RequestSummary" />
         <activity android:name=".LoginActivity">
-
-        </activity>
-        <activity android:name=".TypeWiseList" />
-        <activity android:name=".Catalog">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".TypeWiseList" />
+        <activity android:name=".Catalog">
+
         </activity>
         <activity android:name=".Settings" />
         <activity android:name=".ListItem" />
@@ -48,7 +50,9 @@
             android:value="rzp_test_ivmMqQHZoRea5L" />
 
         <activity android:name=".MerchantActivity" />
-        <activity android:name=".PickDate"></activity>
+        <activity android:name=".PickDate">
+
+        </activity>
         <activity android:name=".Temporary">
 
         </activity>
