@@ -104,11 +104,15 @@ public class TypeWiseList extends AppCompatActivity implements TypeWiseListFragm
         timerTask = new TimerTask() {
             @Override
             public void run() {
-        TypeWiseListFragment typeWiseListFragment = new TypeWiseListFragment();
-        typeWiseListFragment.setRobeToBeDisplayed(robeToBeDisplayed);
-        android.support.v4.app.FragmentManager fragmentManager = getSupportFragmentManager();
-        fragmentManager.beginTransaction().add(R.id.List_container ,typeWiseListFragment ).commit();
+                try {
+                    TypeWiseListFragment typeWiseListFragment = new TypeWiseListFragment();
+                    typeWiseListFragment.setRobeToBeDisplayed(robeToBeDisplayed);
+                    android.support.v4.app.FragmentManager fragmentManager = getSupportFragmentManager();
+                    fragmentManager.beginTransaction().add(R.id.List_container, typeWiseListFragment).commit();
 
+                } catch (IllegalStateException e){
+                    
+                }
             }
         };
         timer.schedule(timerTask, 0, 1000);
