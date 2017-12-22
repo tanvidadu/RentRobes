@@ -99,12 +99,19 @@ public class TypeWiseList extends AppCompatActivity implements TypeWiseListFragm
 
 
                                 // update TextView here!
+        Timer timer = new Timer();
+        TimerTask timerTask;
+        timerTask = new TimerTask() {
+            @Override
+            public void run() {
         TypeWiseListFragment typeWiseListFragment = new TypeWiseListFragment();
         typeWiseListFragment.setRobeToBeDisplayed(robeToBeDisplayed);
         android.support.v4.app.FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction().add(R.id.List_container ,typeWiseListFragment ).commit();
 
-
+            }
+        };
+        timer.schedule(timerTask, 0, 1000);
 
 
     }

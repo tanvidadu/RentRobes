@@ -51,24 +51,11 @@ public class TypeWiseListFragment extends Fragment  {
         listView = (ListView) rootView.findViewById(R.id.List_View_items);
 
         if( robeToBeDisplayed != null ) {
-           /* Thread t = new Thread() {
-                @Override
-                public void run() {
-                    try {
-                        while (!isInterrupted()) {
-                            Thread.sleep(100);
-                            runOnUiThread(new Runnable() {
-                                @Override
-                                public void run() {*/
-                                    listView.setAdapter(robesAdapter);
-                              /*  }
-                            });
-                        }
-                    } catch (InterruptedException e) {
-                    }
-                }
-            };t.start();
-*/
+
+
+             listView.setAdapter(robesAdapter);
+
+
 
             listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
