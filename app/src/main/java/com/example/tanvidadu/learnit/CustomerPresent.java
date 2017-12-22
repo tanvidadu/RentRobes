@@ -9,6 +9,7 @@ public class CustomerPresent {
     public static String customerEmail;
     public static int no_of_days = 1;
 
+
     public static void setNo_of_days(int no_of_days) {
         CustomerPresent.no_of_days = no_of_days;
     }

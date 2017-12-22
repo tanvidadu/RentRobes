@@ -56,77 +56,42 @@ public class TypeWiseList extends AppCompatActivity implements TypeWiseListFragm
             Bundle data = getIntent().getExtras();
 
             CatalogSelected = data.getString("CatalogSelected");
+            robeToBeDisplayed = data.getParcelableArrayList("ROBESLIST");
 
         }catch (Exception e){
             Log.i(TAG , "No Date received   :" + e);
         }
 
 
-        firebaseDatabase = FirebaseDatabase.getInstance();
-        databaseReference = firebaseDatabase.getReference().child("robeForRent").child("dress");
 
-        
-
-
-        databaseReference.addChildEventListener(new ChildEventListener() {
-            @Override
-            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-            RobesForRent temp = dataSnapshot.getValue(RobesForRent.class);
-            temp.setUniqueCode(dataSnapshot.getKey());
-                 addRobes(temp);
-            }
-
-            @Override
-            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-
-            }
-
-            @Override
-            public void onChildRemoved(DataSnapshot dataSnapshot) {
-
-            }
-
-            @Override
-            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
 
 
                                 // update TextView here!
-        Timer timer = new Timer();
-        TimerTask timerTask;
-        timerTask = new TimerTask() {
-            @Override
-            public void run() {
-                try {
-                    TypeWiseListFragment typeWiseListFragment = new TypeWiseListFragment();
-                    typeWiseListFragment.setRobeToBeDisplayed(robeToBeDisplayed);
-                    android.support.v4.app.FragmentManager fragmentManager = getSupportFragmentManager();
-                    fragmentManager.beginTransaction().add(R.id.List_container, typeWiseListFragment).commit();
 
-                } catch (IllegalStateException e){
-                    
+            Timer timer = new Timer();
+            TimerTask timerTask;
+            timerTask = new TimerTask() {
+                @Override
+                public void run() {
+                    try {
+                        TypeWiseListFragment typeWiseListFragment = new TypeWiseListFragment();
+                        typeWiseListFragment.setRobeToBeDisplayed(robeToBeDisplayed);
+                        android.support.v4.app.FragmentManager fragmentManager = getSupportFragmentManager();
+                        fragmentManager.beginTransaction().add(R.id.List_container, typeWiseListFragment).commit();
+
+                    } catch (IllegalStateException e) {
+
+                    }
                 }
-            }
-        };
-        timer.schedule(timerTask, 0, 1000);
-
+            };
+            timer.schedule(timerTask, 0, 50000);
 
     }
 
 
 
 
-    private void addRobes(RobesForRent temp) {
-        robeToBeDisplayed.add(temp);
-        //Log.i("dress extracted" , "brand is : "+ robeToBeDisplayed.isEmpty());
-    }
+
 
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();

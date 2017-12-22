@@ -25,7 +25,7 @@ public class Temporary extends AppCompatActivity {
         setContentView(R.layout.activity_temporary);
 
         firebaseDatabase = FirebaseDatabase.getInstance();
-        robeToBeSoldDatabaseReference = firebaseDatabase.getReference().child("robeForRent").child("dress");
+        /*robeToBeSoldDatabaseReference = firebaseDatabase.getReference().child("robeForRent").child("dress");
         robeToBeSoldDatabaseReference.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
@@ -52,14 +52,20 @@ public class Temporary extends AppCompatActivity {
             public void onCancelled(DatabaseError databaseError) {
 
             }
-        });
-
-
-
+        });*/
+        DatabaseReference databaseReference = firebaseDatabase.getReference().child("robeForRent").child("TRADITIONAL (MALE)");
+        RobesForRent robesForRent = new RobesForRent();
+        robesForRent.setName("South Indian Kurta & Dhoti");
+        robesForRent.setBrand("MCR");
+        robesForRent.setSize(14);
+        robesForRent.setPrice(3000);
+        robesForRent.setColor("Red");
+        robesForRent.setUrl("https://i.pinimg.com/originals/ff/e3/e7/ffe3e763c15ef62fb8608a93b4d726d7.jpg");
+        databaseReference.push().setValue(robesForRent);
 
     }
 
-    private void AddBookedValue(String key) {
+   /* private void AddBookedValue(String key) {
         BookingDate bookingDate = new BookingDate();
         bookingDate.setsDate(12);
         bookingDate.setsMonth(1);
@@ -69,5 +75,5 @@ public class Temporary extends AppCompatActivity {
         bookingDate.setEyear(2018);
         dateReference = firebaseDatabase.getReference().child("BookedDates").child(key);
         dateReference.push().setValue(bookingDate);
-    }
+    }*/
 }
