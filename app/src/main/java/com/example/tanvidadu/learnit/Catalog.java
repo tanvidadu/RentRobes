@@ -1,9 +1,11 @@
 package com.example.tanvidadu.learnit;
 
 import android.content.Intent;
+import android.graphics.Point;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Display;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -14,6 +16,8 @@ import android.widget.GridView;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -28,6 +32,9 @@ public class Catalog extends AppCompatActivity  {
     private  ArrayList<RobesForRent>  dressToBeDisplayed = new ArrayList<RobesForRent>();
     private ArrayList<RobesForRent> TraditionalFemaletobeDisplayed = new ArrayList<RobesForRent>();
     private ArrayList<RobesForRent> TraditionalMaletobeDisplayed = new ArrayList<RobesForRent>();
+    private ArrayList<RobesForRent> formalMaleToBeDisplayed = new ArrayList<RobesForRent>();
+    private ArrayList<RobesForRent> AccessoriesMentobeDisplayed = new ArrayList<RobesForRent>();
+    private ArrayList<RobesForRent> AccessoriesWomentobeDisplayed = new ArrayList<RobesForRent>();
 
 
 
@@ -35,6 +42,14 @@ public class Catalog extends AppCompatActivity  {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_catalog);
+
+
+        Display display = getWindowManager().getDefaultDisplay();
+        Point size = new Point();
+        display.getSize(size);
+        int width = size.x;
+        int height = size.y;
+
 
         //Extracting dates from Intent
 
@@ -44,11 +59,12 @@ public class Catalog extends AppCompatActivity  {
         catalog.add("TRADITIONAL (FEMALE)");
         catalog.add("TRADITIONAL (MALE)");
         catalog.add("FORMALS (MALE)");
-        catalog.add("FORMALS (FEMALE)");
-        catalog.add("ACCESSORIES");
+        catalog.add("ACCESSORIES (MEN)");
+        catalog.add("ACCESSORIES (WOMEN)");
 
         final CatalogAdapter catalogAdapter = new CatalogAdapter(Catalog.this , catalog);
-        ListView listView = (ListView) findViewById(R.id.catalog_listView);
+        GridView listView = (GridView) findViewById(R.id.catalog_listView);
+        listView.setColumnWidth(width/2);
         listView.setAdapter(catalogAdapter);
 
         for( int i = 0 ; i < 6 ; i++){
@@ -69,6 +85,12 @@ public class Catalog extends AppCompatActivity  {
                     robeToBeDisplayed = TraditionalFemaletobeDisplayed;
                 } else if ( catalog.get(position) == "TRADITIONAL (MALE)"){
                     robeToBeDisplayed = TraditionalMaletobeDisplayed;
+                } else if ( catalog.get(position) == "FORMALS (MALE)"){
+                    robeToBeDisplayed = formalMaleToBeDisplayed;
+                } else if ( catalog.get(position) == "ACCESSORIES (MEN)"){
+                    robeToBeDisplayed = AccessoriesMentobeDisplayed;
+                } else if ( catalog.get(position) == "ACCESSORIES (WOMEN)"){
+                    robeToBeDisplayed = AccessoriesWomentobeDisplayed;
                 }
                 else{
                     robeToBeDisplayed = dressToBeDisplayed;
@@ -115,6 +137,12 @@ public class Catalog extends AppCompatActivity  {
                     addTraditionalFemale(temp);
                 } else if ( catalogItem == "TRADITIONAL (MALE)"){
                     addTraditionalMale(temp);
+                } else if ( catalogItem == "FORMALS (MALE)"){
+                    addFormalMale(temp);
+                } else if ( catalogItem == "ACCESSORIES (MEN)"){
+                    addAccessoriesMen(temp);
+                } else if (catalogItem == "ACCESSORIES (WOMEN)"){
+                    addAccessoriesWomen(temp);
                 }
                 else {
                     addDress(temp);
@@ -141,6 +169,18 @@ public class Catalog extends AppCompatActivity  {
 
             }
         });
+    }
+
+    private void addAccessoriesWomen(RobesForRent temp) {
+        AccessoriesWomentobeDisplayed.add(temp);
+    }
+
+    private void addAccessoriesMen(RobesForRent temp) {
+        AccessoriesMentobeDisplayed.add(temp);
+    }
+
+    private void addFormalMale(RobesForRent temp) {
+        formalMaleToBeDisplayed.add(temp);
     }
 
     private void addTraditionalMale(RobesForRent temp) {

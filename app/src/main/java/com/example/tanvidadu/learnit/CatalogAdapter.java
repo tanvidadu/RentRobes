@@ -19,6 +19,9 @@ import java.util.ArrayList;
 
 public class CatalogAdapter extends ArrayAdapter<String> {
 
+    private ArrayList<String> Color = new ArrayList<String>();
+
+
     public CatalogAdapter(@NonNull Context context, @NonNull ArrayList<String> objects) {
         super(context, 0, objects);
     }
@@ -27,6 +30,7 @@ public class CatalogAdapter extends ArrayAdapter<String> {
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         View listItemView = convertView;
+        Color.add("catalog_color_1");
         if(listItemView == null) {
             listItemView = LayoutInflater.from(getContext()).inflate(
                     R.layout.catalog_item, parent, false);
@@ -34,6 +38,12 @@ public class CatalogAdapter extends ArrayAdapter<String> {
         String currentString = getItem(position);
         TextView button = (TextView) listItemView.findViewById(R.id.catalog_item_display_button);
         button.setText(currentString);
+        button.setTextColor(getContext().getResources().getColor(R.color.white));
+        if( position%4 == 0 || position%4 == 3) {
+            button.setBackgroundColor(getContext().getResources().getColor(R.color.catalog_color_2));
+        } else {
+            button.setBackgroundColor(getContext().getResources().getColor(R.color.catalog_color_3));
+        }
         return listItemView;
     }
     public String getCatalog(int position){

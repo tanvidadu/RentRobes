@@ -53,15 +53,14 @@ public class Temporary extends AppCompatActivity {
 
             }
         });*/
-        DatabaseReference databaseReference = firebaseDatabase.getReference().child("robeForRent").child("TRADITIONAL (MALE)");
+        DatabaseReference databaseReference = firebaseDatabase.getReference().child("robeForRent").child("ACCESSORIES (MEN)");
         RobesForRent robesForRent = new RobesForRent();
-        robesForRent.setName("South Indian Kurta & Dhoti");
-        robesForRent.setBrand("MCR");
+        robesForRent.setName("Black Gold Cufflinks");
+        robesForRent.setBrand("U7");
         robesForRent.setSize(14);
-        robesForRent.setPrice(3000);
-        robesForRent.setColor("Red");
-        robesForRent.setUrl("https://i.pinimg.com/originals/ff/e3/e7/ffe3e763c15ef62fb8608a93b4d726d7.jpg");
-        databaseReference.push().setValue(robesForRent);
+        robesForRent.setPrice(2300);
+        robesForRent.setColor("Gold");
+        robesForRent.setUrl("iness-Suit-Hexagon-Tie-Clips-Cufflinks.jpg_640x640.jpg");
 
     }
 

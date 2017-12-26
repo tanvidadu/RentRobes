@@ -4,10 +4,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <TextView
-        android:layout_width="150dp"
-        android:layout_height="100dp"
-        android:layout_marginLeft="24dp"
-        android:layout_marginTop="24dp"
-        android:gravity="left"
-        android:id="@+id/catalog_item_display_button"/>
+        android:layout_width="match_parent"
+        android:layout_height="125dp"
+        android:paddingLeft="18dp"
+        android:gravity="center_vertical"
+        android:id="@+id/catalog_item_display_button"
+        android:background="@drawable/border"/>
 </LinearLayout>
