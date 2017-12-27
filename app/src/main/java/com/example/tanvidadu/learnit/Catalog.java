@@ -12,8 +12,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.ads.AdRequest;
@@ -35,7 +37,7 @@ public class Catalog extends AppCompatActivity  {
     private ArrayList<RobesForRent> formalMaleToBeDisplayed = new ArrayList<RobesForRent>();
     private ArrayList<RobesForRent> AccessoriesMentobeDisplayed = new ArrayList<RobesForRent>();
     private ArrayList<RobesForRent> AccessoriesWomentobeDisplayed = new ArrayList<RobesForRent>();
-
+    private int width = 0;
 
 
     @Override
@@ -47,20 +49,22 @@ public class Catalog extends AppCompatActivity  {
         Display display = getWindowManager().getDefaultDisplay();
         Point size = new Point();
         display.getSize(size);
-        int width = size.x;
-        int height = size.y;
+         width = size.x;
 
 
+        Button Hide_1 = (Button) findViewById(R.id.catalog_hide_button_1);
+        Button Hide_2 = (Button) findViewById(R.id.catalog_hide_button_2);
         //Extracting dates from Intent
 
 
         final ArrayList<String> catalog = new ArrayList<String>();
         catalog.add("dress");
-        catalog.add("TRADITIONAL (FEMALE)");
         catalog.add("TRADITIONAL (MALE)");
+        catalog.add("TRADITIONAL (FEMALE)");
         catalog.add("FORMALS (MALE)");
-        catalog.add("ACCESSORIES (MEN)");
         catalog.add("ACCESSORIES (WOMEN)");
+        catalog.add("ACCESSORIES (MEN)");
+
 
         final CatalogAdapter catalogAdapter = new CatalogAdapter(Catalog.this , catalog);
         GridView listView = (GridView) findViewById(R.id.catalog_listView);
@@ -70,6 +74,43 @@ public class Catalog extends AppCompatActivity  {
         for( int i = 0 ; i < 6 ; i++){
             fetchData(catalog.get(i));
         }
+
+
+        Hide_1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ArrayList<String> WomenOnlyCatalog = new ArrayList<String>();
+                for( int i = 0 ; i < 6 ; i++){
+                    if(i%2 == 0) {
+                        WomenOnlyCatalog.add(catalog.get(i));
+                        Log.i("DRESS ADDED", "onClick: " + WomenOnlyCatalog.get(i/2));
+                    }
+                }
+                final CatalogAdapter catalogAdapterForWomen = new CatalogAdapter(Catalog.this , WomenOnlyCatalog);
+                GridView listView = (GridView) findViewById(R.id.catalog_listView);
+                listView.setColumnWidth(width);
+                listView.setNumColumns(1);
+                listView.setAdapter(catalogAdapterForWomen);
+            }
+        });
+
+        Hide_2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ArrayList<String> MenOnlyCatalog = new ArrayList<String>();
+                for (int i = 0; i < 6; i++) {
+                    if (i % 2 == 1) {
+                        MenOnlyCatalog.add(catalog.get(i));
+                        Log.i("DRESS ADDED", "onClick: " + MenOnlyCatalog.get(i / 2));
+                    }
+                }
+                final CatalogAdapter catalogAdapterForMen = new CatalogAdapter(Catalog.this, MenOnlyCatalog);
+                GridView listView = (GridView) findViewById(R.id.catalog_listView);
+                listView.setColumnWidth(width);
+                listView.setNumColumns(1);
+                listView.setAdapter(catalogAdapterForMen);
+            }
+        });
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
             @Override
@@ -106,6 +147,8 @@ public class Catalog extends AppCompatActivity  {
 
 
     }
+
+
 
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();

@@ -37,17 +37,26 @@ public class CatalogAdapter extends ArrayAdapter<String> {
         }
         String currentString = getItem(position);
         TextView button = (TextView) listItemView.findViewById(R.id.catalog_item_display_button);
-        button.setText(currentString);
-        button.setTextColor(getContext().getResources().getColor(R.color.white));
-        if( position%4 == 0 || position%4 == 3) {
-            button.setBackgroundColor(getContext().getResources().getColor(R.color.catalog_color_2));
-        } else {
-            button.setBackgroundColor(getContext().getResources().getColor(R.color.catalog_color_3));
+        try {
+            button.setText(currentString);
+            button.setTextColor(getContext().getResources().getColor(R.color.white));
+            button.setId(position);
+            if (position % 3 == 0 ) {
+                button.setBackgroundColor(getContext().getResources().getColor(R.color.catalog_color_2));
+            } else if (position%3 == 1) {
+                button.setBackgroundColor(getContext().getResources().getColor(R.color.catalog_color_3));
+            } else {
+                button.setBackgroundColor(getContext().getResources().getColor(R.color.catalog_color_1));
+            }
+        } catch (NullPointerException e){
+
         }
         return listItemView;
     }
     public String getCatalog(int position){
         return getItem(position);
     }
+
+
 
 }

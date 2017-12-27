@@ -3,7 +3,30 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_height="wrap_content"
     android:layout_width="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="12dp"
+        android:layout_marginTop="24dp">
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/pin_icon"/>
+    <Button
+        android:layout_width="135dp"
+        android:layout_height="50dp"
+        android:text="Women"
+        android:id="@+id/catalog_hide_button_1"
+        android:layout_marginLeft="18dp"
+        />
+        <Button
+            android:layout_width="135dp"
+            android:layout_height="50dp"
+            android:text="Men"
+            android:id="@+id/catalog_hide_button_2"
+            />
 
+    </LinearLayout>
 
 <GridView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
