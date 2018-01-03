@@ -15,6 +15,7 @@ import android.widget.ArrayAdapter;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.database.ChildEventListener;
@@ -56,40 +57,24 @@ public class TypeWiseList extends AppCompatActivity implements TypeWiseListFragm
             Bundle data = getIntent().getExtras();
 
             CatalogSelected = data.getString("CatalogSelected");
+
             robeToBeDisplayed = data.getParcelableArrayList("ROBESLIST");
 
         }catch (Exception e){
-            Log.i(TAG , "No Date received   :" + e);
+            Log.i(TAG , "No Category received   :" + e);
         }
 
 
 
+          // update TextView here!
 
+         TypeWiseListFragment typeWiseListFragment = new TypeWiseListFragment();
+         typeWiseListFragment.setRobeToBeDisplayed(robeToBeDisplayed);
+         android.support.v4.app.FragmentManager fragmentManager = getSupportFragmentManager();
+         fragmentManager.beginTransaction().add(R.id.List_container, typeWiseListFragment).commit();
 
-                                // update TextView here!
-
-            Timer timer = new Timer();
-            TimerTask timerTask;
-            timerTask = new TimerTask() {
-                @Override
-                public void run() {
-                    try {
-                        TypeWiseListFragment typeWiseListFragment = new TypeWiseListFragment();
-                        typeWiseListFragment.setRobeToBeDisplayed(robeToBeDisplayed);
-                        android.support.v4.app.FragmentManager fragmentManager = getSupportFragmentManager();
-                        fragmentManager.beginTransaction().add(R.id.List_container, typeWiseListFragment).commit();
-
-                    } catch (IllegalStateException e) {
-
-                    }
-                }
-            };
-            timer.schedule(timerTask, 0, 50000);
 
     }
-
-
-
 
 
 

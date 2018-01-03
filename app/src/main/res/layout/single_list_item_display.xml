@@ -5,30 +5,33 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="horizontal">
     <ImageView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
         android:layout_margin="12dp"
         android:id="@+id/List_item_Image"/>
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:layout_margin="12dp"
+        android:layout_height="150dp"
+        android:paddingTop="24dp"
         android:orientation="vertical">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             tools:hint = "NAME"
+            android:textSize="18dp"
             android:id="@+id/List_item_name"
             />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             tools:hint="BRAND"
+            android:textSize="18dp"
             android:id="@+id/List_item_brand"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             tools:hint="PRICE PER DAY"
+            android:textSize="18dp"
             android:id="@+id/List_item_Price"/>
 
     </LinearLayout>

@@ -6,5 +6,6 @@
     <color name="catalog_color_1">#186ccc</color>
     <color name="catalog_color_2">#6f1c7a</color>
     <color name="catalog_color_3">#d11d5c</color>
+    <color name="theme">#ebff2579</color>
     <color name="white">#ffffff</color>
 </resources>

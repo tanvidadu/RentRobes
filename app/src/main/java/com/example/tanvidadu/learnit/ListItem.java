@@ -3,6 +3,9 @@ package com.example.tanvidadu.learnit;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.Drawable;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Base64;
@@ -13,14 +16,16 @@ import android.widget.DatePicker;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.squareup.picasso.Picasso;
 
-import java.io.IOException;
+import com.squareup.picasso.Picasso;
+import com.squareup.picasso.Target;
+
+
 
 public class ListItem extends AppCompatActivity {
 
     private static final String TAG = "ListItemSelected" ;
-
+    private  int colourCode = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,10 +50,38 @@ public class ListItem extends AppCompatActivity {
         textView.setText(Integer.toString(RobeSelected.getSize()));
         textView = (TextView) findViewById(R.id.list_item_selected_Price);
         textView.setText(Float.toString(RobeSelected.getPrice()));
-        ImageView imageView = (ImageView) findViewById(R.id.list_item_selected_imageId);
+        final ImageView imageView = (ImageView) findViewById(R.id.list_item_selected_imageId);
+        final Button RentPayment = (Button) findViewById(R.id.Payment);
 
-        Picasso.with(this).load(RobeSelected.getUrl()).into(imageView);
-        Button RentPayment = (Button) findViewById(R.id.Payment);
+        Picasso.with(this)
+                .load(RobeSelected.getUrl())
+                .into(new Target() {
+                    @Override
+                    public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
+                        // loaded bitmap is here (bitmap)
+                        imageView.setImageBitmap(bitmap);
+                        colourCode =  getDominantColor(bitmap);
+                        if( colourCode == 255){
+                            colourCode = 0;
+                        }
+                        RentPayment.setBackgroundColor(colourCode);
+
+                    }
+
+                    @Override
+                    public void onBitmapFailed(Drawable errorDrawable) {
+
+                    }
+
+                    @Override
+                    public void onPrepareLoad(Drawable placeHolderDrawable) {
+
+                    }
+                });
+
+
+
+
         final RobesForRent finalRobeSelected = RobeSelected;
         RentPayment.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,8 +93,12 @@ public class ListItem extends AppCompatActivity {
         });
 
     }
-
-
+    public static int getDominantColor(Bitmap bitmap) {
+        Bitmap newBitmap = Bitmap.createScaledBitmap(bitmap, 1, 1, true);
+        final int color = newBitmap.getPixel(0, 0);
+        newBitmap.recycle();
+        return color;
+    }
    
 
 }

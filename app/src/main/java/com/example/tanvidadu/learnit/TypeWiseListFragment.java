@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -45,6 +46,7 @@ public class TypeWiseListFragment extends Fragment  {
          if( savedInstanceState != null && robeToBeDisplayed == null){
              robeToBeDisplayed = savedInstanceState.getParcelableArrayList(List_Items);
          }
+
 
         final ListView listView ;
         final RobesAdapter robesAdapter = new RobesAdapter(getActivity(), robeToBeDisplayed);
