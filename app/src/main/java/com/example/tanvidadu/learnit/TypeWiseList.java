@@ -95,4 +95,9 @@ public class TypeWiseList extends AppCompatActivity implements TypeWiseListFragm
                 return super.onOptionsItemSelected(item);
         }
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+    }
 }

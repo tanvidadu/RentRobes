@@ -33,6 +33,17 @@
         android:layout_height="200dp"
         android:orientation="vertical">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:text="BRAND"
+                android:textStyle="bold"
+                android:paddingLeft="12dp"
+                android:textSize="18sp"
+                android:paddingTop="18dp" />
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -41,6 +52,18 @@
             android:paddingLeft="12dp"
             android:paddingTop="18dp"
             android:id="@+id/list_item_selected_brand"/>
+        </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:text="PRICE"
+                    android:paddingLeft="12dp"
+                    android:textStyle="bold"
+                    android:textSize="18sp"
+                    android:paddingTop="18dp" />
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -49,6 +72,18 @@
             android:textSize="18sp"
             android:paddingTop="18dp"
             android:id="@+id/list_item_selected_Price"/>
+            </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:text="SIZE"
+                android:paddingLeft="12dp"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:paddingTop="18dp" />
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -57,6 +92,19 @@
             android:textSize="18sp"
             android:paddingTop="18dp"
             android:id="@+id/list_item_selected_Size"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:text="COLOUR"
+                android:textStyle="bold"
+                android:paddingLeft="12dp"
+                android:textSize="18sp"
+                android:paddingTop="18dp" />
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -65,6 +113,7 @@
             android:textSize="18sp"
             android:paddingTop="18dp"
             android:id="@+id/list_item_selected_Color"/>
+        </LinearLayout>
     </LinearLayout>
     <Button
         android:layout_width="match_parent"

@@ -1,10 +1,12 @@
 package com.example.tanvidadu.learnit;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
+import android.provider.ContactsContract;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -20,6 +22,9 @@ import android.widget.TextView;
 import com.squareup.picasso.Picasso;
 import com.squareup.picasso.Target;
 
+import java.text.DecimalFormat;
+
+import uk.co.senab.photoview.PhotoViewAttacher;
 
 
 public class ListItem extends AppCompatActivity {
@@ -49,8 +54,9 @@ public class ListItem extends AppCompatActivity {
         textView = (TextView) findViewById(R.id.list_item_selected_Size);
         textView.setText(Integer.toString(RobeSelected.getSize()));
         textView = (TextView) findViewById(R.id.list_item_selected_Price);
-        textView.setText(Float.toString(RobeSelected.getPrice()));
-        final ImageView imageView = (ImageView) findViewById(R.id.list_item_selected_imageId);
+        DecimalFormat form = new DecimalFormat("0.00");
+        textView.setText(form.format(RobeSelected.getPrice()));
+         final ImageView imageView = (ImageView) findViewById(R.id.list_item_selected_imageId);
         final Button RentPayment = (Button) findViewById(R.id.Payment);
 
         Picasso.with(this)
@@ -89,6 +95,15 @@ public class ListItem extends AppCompatActivity {
                 Intent i = new Intent(ListItem.this , PickDate.class );
                 i.putExtra("PaymentOfRobe" , finalRobeSelected);
                 startActivity(i);
+            }
+        });
+
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                PhotoViewAttacher pAttacher;
+                pAttacher = new PhotoViewAttacher(imageView);
+                pAttacher.update();
             }
         });
 
