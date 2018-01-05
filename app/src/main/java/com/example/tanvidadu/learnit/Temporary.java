@@ -1,8 +1,12 @@
 package com.example.tanvidadu.learnit;
 
+import android.app.WallpaperManager;
+import android.content.ComponentName;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -24,8 +28,8 @@ public class Temporary extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_temporary);
 
-        firebaseDatabase = FirebaseDatabase.getInstance();
-        /*robeToBeSoldDatabaseReference = firebaseDatabase.getReference().child("robeForRent").child("dress");
+        /*firebaseDatabase = FirebaseDatabase.getInstance();
+        *//*robeToBeSoldDatabaseReference = firebaseDatabase.getReference().child("robeForRent").child("dress");
         robeToBeSoldDatabaseReference.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
@@ -52,7 +56,7 @@ public class Temporary extends AppCompatActivity {
             public void onCancelled(DatabaseError databaseError) {
 
             }
-        });*/
+        });*//*
         DatabaseReference databaseReference = firebaseDatabase.getReference().child("robeForRent").child("ACCESSORIES (MEN)");
         RobesForRent robesForRent = new RobesForRent();
         robesForRent.setName("Black Gold Cufflinks");
@@ -64,7 +68,7 @@ public class Temporary extends AppCompatActivity {
 
     }
 
-   /* private void AddBookedValue(String key) {
+   *//* private void AddBookedValue(String key) {
         BookingDate bookingDate = new BookingDate();
         bookingDate.setsDate(12);
         bookingDate.setsMonth(1);
@@ -75,4 +79,6 @@ public class Temporary extends AppCompatActivity {
         dateReference = firebaseDatabase.getReference().child("BookedDates").child(key);
         dateReference.push().setValue(bookingDate);
     }*/
+    }
+
 }
