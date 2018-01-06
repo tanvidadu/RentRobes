@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent">
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -6,106 +9,124 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="com.example.tanvidadu.learnit.SellOption">
-    <LinearLayout
+
+
+    <EditText
+        android:id="@+id/NameOfCloth"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="18dp"
+        android:hint="NAME OF CLOTHING"
+        android:padding="12dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"/>
+
+    <EditText
+        android:id="@+id/BrandName"
+        style="SellInfoPage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="18dp"
+        android:hint="BRAND"
+        android:padding="12dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"/>
+
+    <EditText
+        android:id="@+id/CostPrice"
+        style="SellInfoPage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="18dp"
+        android:hint="COST PRICE"
+        android:padding="12dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"/>
+
+    <Button
+        style="SellInfoPage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="18dp"
+        android:onClick="showDatePickerDialog"
+        android:padding="12dp"
+        android:text="PICK DATE"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"/>
+
+    <EditText
+        android:id="@+id/Size"
+        style="SellInfoPage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="18dp"
+        android:hint="SIZE"
+        android:padding="12dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"/>
+
+    <Button
+        android:id="@+id/Color"
+        style="SellInfoPage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="18dp"
+        android:text="SELECT COLOUR "
+        android:background="@color/dark_grey"
+        android:textColor="@color/white"
+        android:padding="12dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"/>
+
+
+    <ImageView
+        android:id="@+id/Sell_cloth_image"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_weight="5"
+        android:layout_gravity="center"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"/>
+
+    <Button
+        android:id="@+id/button_sell_upload_image"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="left"
+        android:text="Upload Image"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"/>
+
+    <ImageView
+        android:id="@+id/Sell_cloth_bill"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_weight="5"
+        android:layout_gravity="center"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"/>
+
+    <Button
+        android:id="@+id/button_sell_upload_bill"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="left"
+        android:text="Upload Image"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"/>
+
+    <Button
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="6"
-        android:orientation="horizontal"
-        >
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:layout_weight="1"
-            android:layout_marginTop="18dp">
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="NAME OF CLOTHING"
-                android:padding="12dp"
-                android:layout_marginBottom="18dp"
-                android:id="@+id/NameOfCloth"/>
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="BRAND"
-                style="SellInfoPage"
-                android:padding="12dp"
-                android:layout_marginBottom="18dp"
-                android:id="@+id/BrandName"/>
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="COST PRICE"
-                style="SellInfoPage"
-                android:padding="12dp"
-                android:layout_marginBottom="18dp"
-                android:id="@+id/CostPrice"/>
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="PICK DATE"
-                android:onClick="showDatePickerDialog"
-                style="SellInfoPage"
-                android:padding="12dp"
-                android:layout_marginBottom="18dp"/>
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="SIZE"
-                style="SellInfoPage"
-                android:padding="12dp"
-                android:layout_marginBottom="18dp"
-                android:id="@+id/Size"/>
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="SELECT COLOUR "
-                android:id="@+id/Color"
-                style="SellInfoPage"
-                android:padding="12dp"
-                android:layout_marginBottom="18dp"
-                />
-
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:layout_weight="5"
-                android:id="@+id/Sell_cloth_image"/>
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:text="Upload Image"
-                android:id="@+id/button_sell_upload_image"
-                android:gravity="left"
-                />
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:layout_weight="5"
-                android:id="@+id/Sell_cloth_bill"/>
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:text="Upload Image"
-                android:id="@+id/button_sell_upload_bill"
-                android:gravity="left"
-                />
-        </LinearLayout>
-
-    </LinearLayout>
-<Button
-    android:layout_width="match_parent"
-    android:layout_height="0dp"
-    android:layout_weight="1"
-    android:text="PROCEED"
-    android:onClick="ProceedFunctionality"
-    />
+        android:layout_weight="1"
+        android:background="@color/dark_grey"
+        android:onClick="ProceedFunctionality"
+        android:text="PROCEED"
+        android:textColor="@color/textColor"
+        android:textSize="32dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"/>
 </LinearLayout>
+</ScrollView>

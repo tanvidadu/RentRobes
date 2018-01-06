@@ -76,6 +76,10 @@ public class GenerateRequest extends AppCompatActivity {
 
         ///Loading Request into FirebaseDatabase
         RequestDatabaseReference.push().setValue(sellRequest);
+
+        Intent i =  new Intent( GenerateRequest.this,RequestSummary.class );
+        startActivity(i);
+
     }
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();

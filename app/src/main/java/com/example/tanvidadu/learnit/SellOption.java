@@ -42,6 +42,23 @@ public class SellOption extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sell_option);
+        Button colorButton = (Button) findViewById(R.id.Color);
+        try {
+            Bundle data = getIntent().getExtras();
+            robeInfoObj.setColour(Integer.toString(data.getInt("COLOR")));
+            colorButton.setBackgroundColor(Integer.valueOf(robeInfoObj.getColour()));
+        } catch (Exception e){
+
+        }
+
+
+        colorButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(SellOption.this, Main2Activity.class);
+                startActivity(i);
+            }
+        });
 
         firebaseDatabase = FirebaseDatabase.getInstance();
         robeToBeSoldDatabaseReference = firebaseDatabase.getReference().child("robeToBeSold");
@@ -50,6 +67,8 @@ public class SellOption extends AppCompatActivity {
         Button photoClothButton = (Button) this.findViewById(R.id.button_sell_upload_image);
         Button photoBillButton = (Button) this.findViewById(R.id.button_sell_upload_bill);
         this.billView = (ImageView) this.findViewById(R.id.Sell_cloth_bill);
+        imageView.setImageDrawable(getResources().getDrawable(R.drawable.ic_launcher_background));
+        billView.setImageDrawable(getResources().getDrawable(R.drawable.ic_launcher_background));
 
         photoClothButton.setOnClickListener(new View.OnClickListener() {
 
@@ -57,6 +76,7 @@ public class SellOption extends AppCompatActivity {
             public void onClick(View v) {
                 Intent cameraIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
                 startActivityForResult(cameraIntent, CAMERA_CLOTH_REQUEST);
+
             }
         });
 
@@ -103,8 +123,6 @@ public class SellOption extends AppCompatActivity {
             robeInfoObj.setCost_price(Float.valueOf(et.getText().toString()));
             et = (EditText) findViewById(R.id.Size);
             robeInfoObj.setSize(Integer.valueOf(et.getText().toString()));
-            et = (EditText)findViewById(R.id.Color);
-            robeInfoObj.setColour(et.getText().toString());
             robeInfoObj.setDay_of_month(DatePickerFragment.getrdayOfMonth());
             robeInfoObj.setMonth(DatePickerFragment.getRmonth());
             robeInfoObj.setYear(DatePickerFragment.getRyear());
