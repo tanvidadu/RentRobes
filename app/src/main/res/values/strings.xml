@@ -2,4 +2,19 @@
     <string name="app_name">LearnIT</string>
 
     <!-- TODO: Remove or change this placeholder text -->
+    <string-array name="Name_array">
+        <item>FORMALS(FEMALE)</item>
+        <item>FORMALS(MALE)</item>
+        <item>TRADITIONAL(FEMALE)</item>
+        <item>TRADITIONAL(MALE)</item>
+        <item>ACCESSORIES(FEMALE)</item>
+        <item>ACCESSORIES(MALE)</item>
+    </string-array>
+    <string-array name="Size_array">
+        <item>10</item>
+        <item>12</item>
+        <item>14</item>
+        <item>16</item>
+        <item>18</item>
+    </string-array>
 </resources>

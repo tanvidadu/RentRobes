@@ -11,13 +11,13 @@
     tools:context="com.example.tanvidadu.learnit.SellOption">
 
 
-    <EditText
+    <Spinner
         android:id="@+id/NameOfCloth"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="18dp"
         android:hint="NAME OF CLOTHING"
-        android:padding="12dp"
+        android:layout_marginTop="18dp"
         android:layout_marginLeft="12dp"
         android:layout_marginRight="12dp"/>
 
@@ -51,17 +51,18 @@
         android:onClick="showDatePickerDialog"
         android:padding="12dp"
         android:text="PICK DATE"
+        android:textColor="@color/textColor"
+        android:background="@color/dark_grey"
         android:layout_marginLeft="12dp"
         android:layout_marginRight="12dp"/>
 
-    <EditText
+    <Spinner
         android:id="@+id/Size"
         style="SellInfoPage"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="18dp"
         android:hint="SIZE"
-        android:padding="12dp"
         android:layout_marginLeft="12dp"
         android:layout_marginRight="12dp"/>
 
@@ -73,7 +74,7 @@
         android:layout_marginBottom="18dp"
         android:text="SELECT COLOUR "
         android:background="@color/dark_grey"
-        android:textColor="@color/white"
+        android:textColor="@color/textColor"
         android:padding="12dp"
         android:layout_marginLeft="12dp"
         android:layout_marginRight="12dp"/>
@@ -83,6 +84,7 @@
         android:id="@+id/Sell_cloth_image"
         android:layout_width="200dp"
         android:layout_height="200dp"
+        android:scaleType="centerCrop"
         android:layout_weight="5"
         android:layout_gravity="center"
         android:layout_marginLeft="12dp"
@@ -103,6 +105,7 @@
         android:layout_width="200dp"
         android:layout_height="200dp"
         android:layout_weight="5"
+        android:scaleType="centerCrop"
         android:layout_gravity="center"
         android:layout_marginLeft="12dp"
         android:layout_marginRight="12dp"/>

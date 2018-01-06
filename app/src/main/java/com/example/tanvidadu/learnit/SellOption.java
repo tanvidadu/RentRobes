@@ -9,15 +9,19 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.AppCompatImageButton;
 import android.util.Base64;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.support.v4.app.Fragment;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.Spinner;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -57,6 +61,44 @@ public class SellOption extends AppCompatActivity {
             public void onClick(View v) {
                 Intent i = new Intent(SellOption.this, Main2Activity.class);
                 startActivity(i);
+            }
+        });
+
+        Spinner spinner_name_of_cloth = (Spinner) findViewById(R.id.NameOfCloth);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                R.array.Name_array, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner_name_of_cloth.setAdapter(adapter);
+
+        spinner_name_of_cloth.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(){
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                robeInfoObj.setName_of_product(parent.getItemAtPosition(position).toString());
+                Log.i("Name" , robeInfoObj.getName_of_product());
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+
+        });
+
+        Spinner spinner_size = (Spinner) findViewById(R.id.Size);
+        ArrayAdapter<CharSequence> adapter_size = ArrayAdapter.createFromResource(this,
+                R.array.Size_array, android.R.layout.simple_spinner_item);
+        adapter_size.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner_size.setAdapter(adapter_size);
+
+        spinner_size.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                robeInfoObj.setSize(Integer.valueOf(parent.getItemAtPosition(position).toString()));
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
             }
         });
 
@@ -115,14 +157,11 @@ public class SellOption extends AppCompatActivity {
     public void ProceedFunctionality (View view){
 
         //Extracting Information and tranferring it to object
-            EditText et = (EditText) findViewById(R.id.NameOfCloth);
-            robeInfoObj.setName_of_product(et.getText().toString());
+            EditText et;
             et = (EditText) findViewById(R.id.BrandName);
             robeInfoObj.setBrand(et.getText().toString());
             et = (EditText) findViewById(R.id.CostPrice);
             robeInfoObj.setCost_price(Float.valueOf(et.getText().toString()));
-            et = (EditText) findViewById(R.id.Size);
-            robeInfoObj.setSize(Integer.valueOf(et.getText().toString()));
             robeInfoObj.setDay_of_month(DatePickerFragment.getrdayOfMonth());
             robeInfoObj.setMonth(DatePickerFragment.getRmonth());
             robeInfoObj.setYear(DatePickerFragment.getRyear());
