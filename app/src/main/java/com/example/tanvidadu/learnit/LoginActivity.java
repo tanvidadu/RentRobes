@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -35,20 +36,16 @@ public class LoginActivity extends AppCompatActivity {
     private FirebaseAuth.AuthStateListener authStateListener;
     private FirebaseDatabase firebaseDatabase;
     private DatabaseReference databaseReference;
+    private boolean isAlreadyPresent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.welcome_activity);
 
         SharedPreferences settings = getSharedPreferences(CustomerEmail, 0);
         CustomerPresent.setCustomerEmail( settings.getString("silentMode", null));
         //setSilent(silent);
-
-        LinearLayout hiddenLayout = (LinearLayout) findViewById(R.id.hiddenLayout);
-        if(hiddenLayout != null){
-            RemoveSignUp();
-        }
 
 
 
@@ -61,29 +58,24 @@ public class LoginActivity extends AppCompatActivity {
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
                 if (user != null) {
+
                     customerInfo.setName(user.getDisplayName());
                     customerInfo.setEmail(user.getEmail());
                     customerInfo.setProviderId(user.getProviderId());
                     CustomerPresent.setCustomerEmail(user.getEmail());
-                   /// onSignedinIntialize(user);
+                   onSignedinIntialize(user.getDisplayName());
                    ///InflateWelcomePage();
+                     isAlreadyPresent = CheckinFirebase(user.getEmail());
+                    CustomerPresent.isPresent = true;
 
-                    boolean isAlreadyPresent = CheckinFirebase(user.getEmail());
-                    if(isAlreadyPresent){
-                        RemoveWelcomePage();
-                        InflateWelcomePage();
-                    } else {
-                        InflateSignup();
-                    }
 
                     //Toast.makeText(LoginActivity.this, "YOU HAVE SUCCESSFULLY LOGGED IN", Toast.LENGTH_LONG).show();
                 } else {
-                    onSignedoutCleanUp();
                     // Choose authentication providers
                     List<AuthUI.IdpConfig> providers = Arrays.asList(
-                            new AuthUI.IdpConfig.Builder(AuthUI.EMAIL_PROVIDER).build()
+                            new AuthUI.IdpConfig.Builder(AuthUI.EMAIL_PROVIDER).build(),
                             //new AuthUI.IdpConfig.Builder(AuthUI.PHONE_VERIFICATION_PROVIDER).build(),
-                            //new AuthUI.IdpConfig.Builder(AuthUI.GOOGLE_PROVIDER).build(),
+                            new AuthUI.IdpConfig.Builder(AuthUI.GOOGLE_PROVIDER).build()
                             //new AuthUI.IdpConfig.Builder(AuthUI.FACEBOOK_PROVIDER).build(),
                             //new AuthUI.IdpConfig.Builder(AuthUI.TWITTER_PROVIDER).build()
                     );
@@ -130,12 +122,13 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
-    private void onSignedoutCleanUp() {
-    }
+
 
     private void onSignedinIntialize(String name) {
         TextView textView = (TextView) findViewById(R.id.WelcomeText);
-        textView.setText(" WELCOME TO RENTROBES " + name);
+        textView.setText("WELCOME TO RENTROBES ");
+        textView = (TextView) findViewById(R.id.WelcomeName);
+        textView.setText(name);
     }
 
     @Override
@@ -158,49 +151,15 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     //Inflate SignUP
-    public void InflateSignup() {
-        LinearLayout hiddenLayout = (LinearLayout) findViewById(R.id.hiddenLayout);
-        if (hiddenLayout == null) {
-            //Inflate the Hidden Layout Information View
-            LinearLayout myLayout = (LinearLayout) findViewById(R.id.signup_layout);
-            View hiddenInfo = getLayoutInflater().inflate(R.layout.signup, myLayout, false);
-            myLayout.addView(hiddenInfo);
 
-        }
-    }
 
     //Extracting Info and sending it to firebase
-    public void SubmitUserInfo( View view){
-        //Getting info for CustomerInfo obj
-        EditText et = (EditText) findViewById(R.id.customerPhoneno);
-        customerInfo.setPhoneNumber(et.getText().toString());
-        et = (EditText) findViewById(R.id.customerAge);
-        customerInfo.setAge(Integer.valueOf(et.getText().toString()));
 
-        // Loading Information in Firebase
-        databaseReference.push().setValue(customerInfo);
 
-        //Removing SignUP layout and Calling Welcome Page
-        RemoveSignUp();
-        CustomerPresent.isPresent = true;
-        InflateWelcomePage();
-    }
 
-    // Inflating Welcome page
-    public void InflateWelcomePage() {
-        LinearLayout hiddenLayout = (LinearLayout) findViewById(R.id.hiddenLayout2);
 
-            //Inflate the Hidden Layout Information View
-        if(hiddenLayout == null) {
-            LinearLayout myLayout = (LinearLayout) findViewById(R.id.WelcomeLayout);
-            View hiddenInfo = getLayoutInflater().inflate(R.layout.welcome_activity, myLayout, false);
-            myLayout.addView(hiddenInfo);
-        }
-            if( customerInfo.getName() != null) {
-                onSignedinIntialize(customerInfo.getName());
-            }
-        Toast.makeText(LoginActivity.this, "SIGNED IN", Toast.LENGTH_LONG).show();
-    }
+
+
 
     // to check whether firebase contains that user or not
     public boolean CheckinFirebase( String userEmail){
@@ -241,32 +200,18 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     // Remove SignUP
-    public void RemoveSignUp(){
-        View myView = findViewById(R.id.hiddenLayout);
-        ViewGroup parent = (ViewGroup) myView.getParent();
-        parent.removeView(myView);
 
-    }
-    //Remove Welcome Page
-    public void RemoveWelcomePage(){
-        View myView = findViewById(R.id.hiddenLayout2);
-
-        try {
-            ViewGroup parent = (ViewGroup) myView.getParent();
-            parent.removeView(myView);
-        } catch (NullPointerException e){
-
-        }
-    }
 
     //Further to main Activity
     public void proceedToMainActivty (View v){
-        Intent i = new Intent(LoginActivity.this,MainActivity.class);
-        LinearLayout hiddenLayout = (LinearLayout) findViewById(R.id.hiddenLayout);
-        if(hiddenLayout != null){
-            RemoveSignUp();
+        if(isAlreadyPresent){
+            Intent i = new Intent(LoginActivity.this , MainActivity.class);
+            startActivity(i);
+        } else {
+            Intent i = new Intent(LoginActivity.this , SignUp.class);
+            i.putExtra("CustomerInfo" ,customerInfo );
+            startActivity(i);
         }
-        startActivity(i);
     }
 
 

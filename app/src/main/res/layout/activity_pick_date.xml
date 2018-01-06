@@ -7,53 +7,95 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="com.example.tanvidadu.learnit.PickDate">
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="CHECK AVAILABILITY"
+        android:layout_marginTop="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginRight="32dp"
+        android:textSize="32dp"
+        android:textColor="@color/textColor"
+        android:onClick="showDatePickerDialog"
+        android:id="@+id/checkAvailablity"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <Button
-            android:layout_width="wrap_content"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:text="Starting Date"
-            android:layout_margin="32dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginLeft="32dp"
+            android:textSize="18dp"
+            android:textColor="@color/textColor"
             android:onClick="showDatePickerDialog"
             android:id="@+id/StartDate"/>
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        <ImageButton
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:text="Lock Date"
-            android:layout_margin="32dp"
+            android:layout_marginTop="32dp"
+            android:src="@drawable/exclamation_mark_red"
+            android:scaleType="centerCrop"
             android:id="@+id/LockStartDate"/>
     </LinearLayout>
+    <TextView
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="64dp"
+        android:textColor="@color/red"
+        android:text="Tap Exclamation to lock Date "
+        android:id="@+id/LockDateView1"/>
      <LinearLayout
          android:layout_width="match_parent"
          android:layout_height="wrap_content">
          <Button
-             android:layout_width="wrap_content"
+             android:layout_width="200dp"
              android:layout_height="wrap_content"
              android:text="Ending Date"
-             android:layout_margin="32dp"
+             android:layout_marginTop="32dp"
+             android:textSize="18dp"
+             android:textColor="@color/textColor"
+             android:layout_marginLeft="32dp"
              android:onClick="showDatePickerDialog"
              android:id="@+id/EndDate"/>
-         <Button
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
+         <ImageButton
+             android:layout_width="50dp"
+             android:layout_height="50dp"
              android:text="Lock Date"
-             android:layout_margin="32dp"
+             android:src="@drawable/exclamation_mark_red"
+             android:scaleType="centerCrop"
+             android:layout_marginTop="32dp"
              android:id="@+id/LockEndDate"/>
      </LinearLayout>
-    <Button
-        android:layout_width="wrap_content"
+    <TextView
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:text="CHECK AVAILABILITY"
-        android:layout_margin="32dp"
-        android:onClick="showDatePickerDialog"
-        android:id="@+id/checkAvailablity"/>
+        android:layout_marginLeft="64dp"
+        android:textColor="@color/red"
+        android:text="Tap Exclamation to lock Date "
+        android:id="@+id/LockDateView2"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginRight="32dp"
+        android:gravity="center"
+        android:textSize="32dp"
+        android:textColor="@color/textColor"
+        android:text=" CHECK DATES"
+        android:id="@+id/LockDateMessage"/>
 
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Proceed"
-        android:layout_margin="32dp"
+        android:textSize="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginRight="32dp"
+        android:textColor="@color/textColor"
         android:onClick="showDatePickerDialog"
         android:id="@+id/ProceedDates"/>
 </LinearLayout>

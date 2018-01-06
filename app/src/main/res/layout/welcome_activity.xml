@@ -1,23 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:id="@+id/hiddenLayout2">
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/welcome_page"
+        android:scaleType="centerCrop"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/WelcomeName"
+            android:textSize="44dp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:textColor="#42f4e8"
+            tools:hint="HI"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/WelcomeText"/>
+        android:id="@+id/WelcomeText"
+        android:textSize="44dp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@+id/WelcomeName"
+        android:textColor="#42f4e8"
+        tools:hint="Welcome!!"/>
+
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="175dp"
         android:layout_height="wrap_content"
         android:text="LOG OUT"
-        android:onClick="Signout"/>
+        android:onClick="Signout"
+        android:id="@+id/SignOUT"
+        android:textColor="@color/textColor"
+        android:background="@color/dark_grey"
+        android:layout_alignParentBottom="true" />
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="CONTINUE"
-        android:onClick="proceedToMainActivty"/>
-
+        android:background="@color/dark_grey"
+        android:textColor="@color/textColor"
+        android:onClick="proceedToMainActivty"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@+id/SignOUT"/>
+    </RelativeLayout>
 </LinearLayout>

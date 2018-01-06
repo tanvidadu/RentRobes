@@ -26,6 +26,7 @@
             android:layout_width="300dp"
             android:layout_height="300dp"
             android:padding="18dp"
+            android:scaleType="centerCrop"
             android:id="@+id/list_item_selected_imageId"/>
 
     <LinearLayout
