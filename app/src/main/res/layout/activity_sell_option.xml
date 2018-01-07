@@ -42,20 +42,41 @@
         android:padding="12dp"
         android:layout_marginLeft="12dp"
         android:layout_marginRight="12dp"/>
-
-    <Button
-        style="SellInfoPage"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="18dp"
+        android:orientation="horizontal"
+        android:layout_marginBottom="4dp"
+        android:layout_gravity="center"
+        android:gravity="center">
+    <Button
+        style="SellInfoPage"
+        android:layout_width="270dp"
+        android:layout_height="wrap_content"
         android:onClick="showDatePickerDialog"
-        android:padding="12dp"
-        android:text="PICK DATE"
+        android:text="PURCHASE DATE"
+        android:id="@+id/PurchaseDate"
+        android:layout_marginRight="2dp"
         android:textColor="@color/textColor"
         android:background="@color/dark_grey"
-        android:layout_marginLeft="12dp"
-        android:layout_marginRight="12dp"/>
-
+        android:layout_marginLeft="12dp" />
+        <ImageButton
+            android:layout_width="47dp"
+            android:layout_height="47dp"
+            android:text="Lock Date"
+            android:background="@color/dark_grey"
+            android:src="@drawable/exclamation_mark_red"
+            android:scaleType="centerCrop"
+            android:id="@+id/LockPurchaseDate"/>
+    </LinearLayout>
+    <TextView
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="64dp"
+        android:textColor="@color/red"
+        android:layout_marginBottom="18dp"
+        android:text="Tap Exclamation to lock Date "
+        android:id="@+id/LockDateView"/>
     <Spinner
         android:id="@+id/Size"
         style="SellInfoPage"
@@ -95,8 +116,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:gravity="left"
-        android:text="Upload Image"
+        android:gravity="center"
+        android:text="Upload Robe Image"
         android:layout_marginLeft="12dp"
         android:layout_marginRight="12dp"/>
 
@@ -115,8 +136,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:gravity="left"
-        android:text="Upload Image"
+        android:gravity="center"
+        android:text="Upload Bill Image"
         android:layout_marginLeft="12dp"
         android:layout_marginRight="12dp"/>
 

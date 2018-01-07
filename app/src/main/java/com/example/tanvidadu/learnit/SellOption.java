@@ -22,11 +22,14 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.io.ByteArrayOutputStream;
+
+import uk.co.senab.photoview.PhotoViewAttacher;
 
 
 public class SellOption extends AppCompatActivity {
@@ -102,6 +105,21 @@ public class SellOption extends AppCompatActivity {
             }
         });
 
+        final ImageButton imageButton = (ImageButton) findViewById(R.id.LockPurchaseDate);
+        imageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                imageButton.setImageDrawable(getResources().getDrawable(R.drawable.tick_mark_icon_png_6619));
+                Button button = (Button) findViewById(R.id.PurchaseDate);
+                robeInfoObj.setDay_of_month(DatePickerFragment.getrdayOfMonth());
+                robeInfoObj.setMonth(DatePickerFragment.getRmonth());
+                robeInfoObj.setYear(DatePickerFragment.getRyear());
+                button.setText(robeInfoObj.getDay_of_month() + "/" + robeInfoObj.getMonth()+"/" + robeInfoObj.getYear());
+                TextView textView = ( TextView) findViewById(R.id.LockDateView);
+                textView.setVisibility(View.INVISIBLE);
+            }
+        });
+
         firebaseDatabase = FirebaseDatabase.getInstance();
         robeToBeSoldDatabaseReference = firebaseDatabase.getReference().child("robeToBeSold");
 
@@ -119,6 +137,22 @@ public class SellOption extends AppCompatActivity {
                 Intent cameraIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
                 startActivityForResult(cameraIntent, CAMERA_CLOTH_REQUEST);
 
+            }
+        });
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                PhotoViewAttacher pAttacher;
+                pAttacher = new PhotoViewAttacher(imageView);
+                pAttacher.update();
+            }
+        });
+        billView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                PhotoViewAttacher pAttacher;
+                pAttacher = new PhotoViewAttacher(billView);
+                pAttacher.update();
             }
         });
 
@@ -162,9 +196,6 @@ public class SellOption extends AppCompatActivity {
             robeInfoObj.setBrand(et.getText().toString());
             et = (EditText) findViewById(R.id.CostPrice);
             robeInfoObj.setCost_price(Float.valueOf(et.getText().toString()));
-            robeInfoObj.setDay_of_month(DatePickerFragment.getrdayOfMonth());
-            robeInfoObj.setMonth(DatePickerFragment.getRmonth());
-            robeInfoObj.setYear(DatePickerFragment.getRyear());
             robeInfoObj.setUniqueId();
 
         ///putting data in firebase
