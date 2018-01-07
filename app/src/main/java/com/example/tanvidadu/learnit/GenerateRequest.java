@@ -123,7 +123,4 @@ public class GenerateRequest extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
     }
-
-
-
 }

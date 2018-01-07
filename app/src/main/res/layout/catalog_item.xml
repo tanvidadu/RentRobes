@@ -6,8 +6,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="125dp"
-        android:paddingLeft="18dp"
-        android:gravity="center_vertical"
+        android:gravity="center"
         android:id="@+id/catalog_item_display_button"
         android:background="@drawable/border"/>
 </LinearLayout>

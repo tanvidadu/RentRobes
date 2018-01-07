@@ -37,7 +37,11 @@ public class Catalog extends AppCompatActivity  {
     private ArrayList<RobesForRent> formalMaleToBeDisplayed = new ArrayList<RobesForRent>();
     private ArrayList<RobesForRent> AccessoriesMentobeDisplayed = new ArrayList<RobesForRent>();
     private ArrayList<RobesForRent> AccessoriesWomentobeDisplayed = new ArrayList<RobesForRent>();
+    private ArrayList<String> MenOnlyCatalog = new ArrayList<String>();
+    private ArrayList<String> WomenOnlyCatalog = new ArrayList<String>();
     private int width = 0;
+    private boolean isFemaleSelected = false;
+    private boolean isMaleSelected = false;
 
 
     @Override
@@ -64,9 +68,16 @@ public class Catalog extends AppCompatActivity  {
         catalog.add("FORMALS (MALE)");
         catalog.add("ACCESSORIES (WOMEN)");
         catalog.add("ACCESSORIES (MEN)");
+        final ArrayList<String> catalogName = new ArrayList<String>();
+        catalogName.add("FORMALS (FEMALE)");
+        catalogName.add("TRADITIONAL (MALE)");
+        catalogName.add("TRADITIONAL (FEMALE)");
+        catalogName.add("FORMALS (MALE)");
+        catalogName.add("ACCESSORIES (WOMEN)");
+        catalogName.add("ACCESSORIES (MEN)");
 
 
-        final CatalogAdapter catalogAdapter = new CatalogAdapter(Catalog.this , catalog);
+        final CatalogAdapter catalogAdapter = new CatalogAdapter(Catalog.this , catalogName);
         GridView listView = (GridView) findViewById(R.id.catalog_listView);
         listView.setColumnWidth(width/2);
         listView.setAdapter(catalogAdapter);
@@ -79,13 +90,15 @@ public class Catalog extends AppCompatActivity  {
         Hide_1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ArrayList<String> WomenOnlyCatalog = new ArrayList<String>();
+
                 for( int i = 0 ; i < 6 ; i++){
                     if(i%2 == 0) {
-                        WomenOnlyCatalog.add(catalog.get(i));
+                        WomenOnlyCatalog.add(catalogName.get(i));
                         Log.i("DRESS ADDED", "onClick: " + WomenOnlyCatalog.get(i/2));
                     }
                 }
+                isFemaleSelected = true;
+                isMaleSelected = false;
                 final CatalogAdapter catalogAdapterForWomen = new CatalogAdapter(Catalog.this , WomenOnlyCatalog);
                 GridView listView = (GridView) findViewById(R.id.catalog_listView);
                 listView.setColumnWidth(width);
@@ -97,13 +110,15 @@ public class Catalog extends AppCompatActivity  {
         Hide_2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ArrayList<String> MenOnlyCatalog = new ArrayList<String>();
+
                 for (int i = 0; i < 6; i++) {
                     if (i % 2 == 1) {
                         MenOnlyCatalog.add(catalog.get(i));
                         Log.i("DRESS ADDED", "onClick: " + MenOnlyCatalog.get(i / 2));
                     }
                 }
+                isMaleSelected = true;
+                isFemaleSelected = false;
                 final CatalogAdapter catalogAdapterForMen = new CatalogAdapter(Catalog.this, MenOnlyCatalog);
                 GridView listView = (GridView) findViewById(R.id.catalog_listView);
                 listView.setColumnWidth(width);
@@ -121,20 +136,37 @@ public class Catalog extends AppCompatActivity  {
                 Intent intent = new Intent(Catalog.this,TypeWiseList.class);
                 //based on item add info to intent
                 String temp = (String) item;
-                if( catalog.get(position) == "TRADITIONAL (FEMALE)")
-                {
-                    robeToBeDisplayed = TraditionalFemaletobeDisplayed;
-                } else if ( catalog.get(position) == "TRADITIONAL (MALE)"){
-                    robeToBeDisplayed = TraditionalMaletobeDisplayed;
-                } else if ( catalog.get(position) == "FORMALS (MALE)"){
-                    robeToBeDisplayed = formalMaleToBeDisplayed;
-                } else if ( catalog.get(position) == "ACCESSORIES (MEN)"){
-                    robeToBeDisplayed = AccessoriesMentobeDisplayed;
-                } else if ( catalog.get(position) == "ACCESSORIES (WOMEN)"){
-                    robeToBeDisplayed = AccessoriesWomentobeDisplayed;
-                }
-                else{
-                    robeToBeDisplayed = dressToBeDisplayed;
+                if( !isFemaleSelected && !isMaleSelected ) {
+                    if (catalog.get(position) == "TRADITIONAL (FEMALE)") {
+                        robeToBeDisplayed = TraditionalFemaletobeDisplayed;
+                    } else if (catalog.get(position) == "TRADITIONAL (MALE)") {
+                        robeToBeDisplayed = TraditionalMaletobeDisplayed;
+                    } else if (catalog.get(position) == "FORMALS (MALE)") {
+                        robeToBeDisplayed = formalMaleToBeDisplayed;
+                    } else if (catalog.get(position) == "ACCESSORIES (MEN)") {
+                        robeToBeDisplayed = AccessoriesMentobeDisplayed;
+                    } else if (catalog.get(position) == "ACCESSORIES (WOMEN)") {
+                        robeToBeDisplayed = AccessoriesWomentobeDisplayed;
+                    } else {
+                        robeToBeDisplayed = dressToBeDisplayed;
+                    }
+                } else if ( isFemaleSelected ){
+                    if( WomenOnlyCatalog.get(position) == "TRADITIONAL (FEMALE)"){
+                        robeToBeDisplayed = TraditionalFemaletobeDisplayed;
+                    } else if ( WomenOnlyCatalog.get(position) == "ACCESSORIES (WOMEN)"){
+                        robeToBeDisplayed = AccessoriesWomentobeDisplayed;
+                    } else {
+                        robeToBeDisplayed = dressToBeDisplayed;
+                    }
+
+                } else if ( isMaleSelected) {
+                    if( MenOnlyCatalog.get(position) == "TRADITIONAL (MALE)"){
+                        robeToBeDisplayed = TraditionalMaletobeDisplayed;
+                    } else if (MenOnlyCatalog.get(position) == "ACCESSORIES (MEN)"){
+                        robeToBeDisplayed = AccessoriesMentobeDisplayed;
+                    } else {
+                        robeToBeDisplayed = formalMaleToBeDisplayed;
+                    }
                 }
 
                 intent.putExtra("ROBESLIST" , robeToBeDisplayed);

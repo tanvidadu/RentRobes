@@ -37,14 +37,15 @@
 
         </activity>
         <activity android:name=".LoginActivity">
+
+        </activity>
+        <activity android:name=".TypeWiseList" />
+        <activity android:name=".Catalog" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".TypeWiseList" />
-        <activity android:name=".Catalog" />
         <activity android:name=".Settings" />
         <activity android:name=".ListItem" />
 
