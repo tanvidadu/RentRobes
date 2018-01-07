@@ -3,7 +3,10 @@ package com.example.tanvidadu.learnit;
 import android.app.Activity;
 import android.app.DialogFragment;
 import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -23,6 +26,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -35,6 +39,8 @@ import uk.co.senab.photoview.PhotoViewAttacher;
 public class SellOption extends AppCompatActivity {
     private static final int CAMERA_CLOTH_REQUEST = 1888;
     private static final int CAMERA_BILL_REQUEST = 1889;
+    private static int RESULT_LOAD_IMG = 1890;
+    private static int RESULT_LOAD_BILL = 1891;
 
     private ImageView imageView;
     private ImageView billView;
@@ -43,6 +49,8 @@ public class SellOption extends AppCompatActivity {
 
     private FirebaseDatabase firebaseDatabase;
     private DatabaseReference robeToBeSoldDatabaseReference;
+    private String imgDecodableString;
+
     ///public long UNIQUE_PDT_ID = robeInfoObj.getUnique_pdt_id();
 
     @Override
@@ -177,7 +185,50 @@ public class SellOption extends AppCompatActivity {
             billView.setImageBitmap(photo);
             robeInfoObj.setBill_url(encodeBitmap(photo));
         }
+        try {
+            if (requestCode == RESULT_LOAD_IMG && resultCode == RESULT_OK
+                    && null != data) {
+                Uri selectedImage = data.getData();
+                String[] filePathColumn = { MediaStore.Images.Media.DATA };
+                Cursor cursor = getContentResolver().query(selectedImage,
+                        filePathColumn, null, null, null);
+                cursor.moveToFirst();
+                int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
+                imgDecodableString = cursor.getString(columnIndex);
+                cursor.close();
+                imageView.setImageBitmap(BitmapFactory
+                                .decodeFile(imgDecodableString));
+            } else {
+                Toast.makeText(this, "You haven't picked Image",
+                        Toast.LENGTH_LONG).show();
+            }
+        } catch (Exception e) {
+            Toast.makeText(this, "Something went wrong", Toast.LENGTH_LONG)
+                    .show();
+        }
+        try {
+            if (requestCode == RESULT_LOAD_BILL && resultCode == RESULT_OK
+                    && null != data) {
+                Uri selectedImage = data.getData();
+                String[] filePathColumn = { MediaStore.Images.Media.DATA };
+                Cursor cursor = getContentResolver().query(selectedImage,
+                        filePathColumn, null, null, null);
+                cursor.moveToFirst();
+                int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
+                imgDecodableString = cursor.getString(columnIndex);
+                cursor.close();
+                billView.setImageBitmap(BitmapFactory
+                        .decodeFile(imgDecodableString));
+            } else {
+                Toast.makeText(this, "You haven't picked Image",
+                        Toast.LENGTH_LONG).show();
+            }
+        } catch (Exception e) {
+            Toast.makeText(this, "Something went wrong", Toast.LENGTH_LONG)
+                    .show();
+        }
     }
+
 
     public void showDatePickerDialog(View v) {
         DialogFragment newFragment = new DatePickerFragment();
@@ -235,7 +286,31 @@ public class SellOption extends AppCompatActivity {
         }
     }
 
+    public void loadImagefromGallery(View view) {
+        // Create intent to Open Image applications like Gallery, Google Photos
+        Intent galleryIntent = new Intent(Intent.ACTION_PICK,
+                android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        startActivityForResult(galleryIntent, RESULT_LOAD_IMG);
     }
+    public void loadImagefromCamera( View view){
+        Intent cameraIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
+        startActivityForResult(cameraIntent, CAMERA_CLOTH_REQUEST);
+    }
+
+    public void loadBillfromGallery(View view) {
+        // Create intent to Open Image applications like Gallery, Google Photos
+        Intent galleryIntent = new Intent(Intent.ACTION_PICK,
+                android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        startActivityForResult(galleryIntent, RESULT_LOAD_BILL);
+    }
+    public void loadBillfromCamera( View view){
+        Intent cameraIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
+        startActivityForResult(cameraIntent, CAMERA_BILL_REQUEST);
+    }
+
+
+
+}
 
 
 
