@@ -17,25 +17,38 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/WelcomeName"
-            android:textSize="44dp"
+            android:textSize="32dp"
+            android:layout_marginTop="12dp"
             android:textStyle="bold"
             android:gravity="center"
             android:layout_centerVertical="true"
             android:layout_centerHorizontal="true"
-            android:textColor="#42f4e8"
+            android:textColor="@color/white"
             tools:hint="HI"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/WelcomeText"
-        android:textSize="44dp"
-        android:textStyle="bold"
-        android:gravity="center"
-        android:layout_centerHorizontal="true"
-        android:layout_above="@+id/WelcomeName"
-        android:textColor="#42f4e8"
-        tools:hint="Welcome!!"/>
+        <TextView
+            android:id="@+id/WelcomeText1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/WelcomeName"
+            android:layout_centerHorizontal="true"
+            android:fontFamily="cursive"
+            android:gravity="center"
+            android:textColor="@color/textColor"
+            android:textSize="44dp"
+            android:textStyle="bold"
+            tools:hint="Welcome!!" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/WelcomeText2"
+            android:textSize="44dp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:layout_centerHorizontal="true"
+            android:layout_above="@+id/WelcomeText1"
+            android:textColor="#42f4e8"
+            tools:hint="Welcome!!"/>
 
     <Button
         android:layout_width="175dp"

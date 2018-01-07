@@ -33,29 +33,71 @@
         android:layout_marginRight="12dp"
         android:textSize="24dp"
         android:id="@+id/requestAddress"/>
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:orientation="horizontal">
     <Button
-        android:layout_width="match_parent"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:text="SELECT SELLING DATE"
         android:textStyle="bold"
         android:layout_marginLeft="12dp"
-        android:layout_marginRight="12dp"
+        android:layout_marginRight="2dp"
         android:layout_marginTop="32dp"
         android:textColor="@color/dark_grey"
         android:textSize="24dp"
+        android:id="@+id/pickupDatebutton"
         android:onClick="showDatePickerDialog"/>
-    <Button
+           <ImageButton
+               android:layout_width="50dp"
+               android:layout_height="50dp"
+               android:text="Lock Date"
+               android:layout_marginTop="32dp"
+               android:src="@drawable/exclamation_mark_red"
+               android:scaleType="centerCrop"
+               android:id="@+id/LockPickUPDate"/>
+       </LinearLayout>
+       <TextView
+           android:layout_width="200dp"
+           android:layout_height="wrap_content"
+           android:layout_marginLeft="64dp"
+           android:textColor="@color/red"
+           android:text="Tap Exclamation to lock Date "
+           android:id="@+id/LockDateView4"/>
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="SELECT VALID TIME"
+        android:orientation="horizontal">
+    <Button
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:text="SELECT SELLING TIME"
         android:textStyle="bold"
         android:layout_marginLeft="12dp"
-        android:layout_marginRight="12dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginRight="2dp"
+        android:layout_marginTop="28dp"
         android:textColor="@color/dark_grey"
         android:textSize="24dp"
+        android:id="@+id/pickupTimebutton"
         android:onClick="showTimePickerDialog"
         />
+        <ImageButton
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:text="Lock Date"
+            android:layout_marginTop="28dp"
+            android:src="@drawable/exclamation_mark_red"
+            android:scaleType="centerCrop"
+            android:id="@+id/LockPickUPTime"/>
+    </LinearLayout>
+       <TextView
+           android:layout_width="200dp"
+           android:layout_height="wrap_content"
+           android:layout_marginLeft="64dp"
+           android:textColor="@color/red"
+           android:text="Tap Exclamation to lock Time "
+           android:id="@+id/LockTimeView"/>
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -63,7 +105,7 @@
         android:id="@+id/sellExpectedPrice"
         android:layout_marginLeft="12dp"
         android:layout_marginRight="12dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="28dp"
         android:textStyle="bold"
         android:textColor="@color/dark_grey"
         android:textSize="24dp"

@@ -31,6 +31,9 @@ import android.widget.Toast;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import org.xdty.preference.colorpicker.ColorPickerDialog;
+import org.xdty.preference.colorpicker.ColorPickerSwatch;
+
 import java.io.ByteArrayOutputStream;
 
 import uk.co.senab.photoview.PhotoViewAttacher;
@@ -50,6 +53,7 @@ public class SellOption extends AppCompatActivity {
     private FirebaseDatabase firebaseDatabase;
     private DatabaseReference robeToBeSoldDatabaseReference;
     private String imgDecodableString;
+    private int mSelectedColor;
 
     ///public long UNIQUE_PDT_ID = robeInfoObj.getUnique_pdt_id();
 
@@ -57,11 +61,11 @@ public class SellOption extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sell_option);
-        Button colorButton = (Button) findViewById(R.id.Color);
+        final Button colorButton = (Button) findViewById(R.id.Color);
         try {
             Bundle data = getIntent().getExtras();
             robeInfoObj.setColour(Integer.toString(data.getInt("COLOR")));
-            colorButton.setBackgroundColor(Integer.valueOf(robeInfoObj.getColour()));
+
         } catch (Exception e){
 
         }
@@ -70,8 +74,35 @@ public class SellOption extends AppCompatActivity {
         colorButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(SellOption.this, Main2Activity.class);
-                startActivity(i);
+                int[] mColors = getResources().getIntArray(R.array.default_rainbow);
+
+                ColorPickerDialog dialog = ColorPickerDialog.newInstance(R.string.color_picker_default_title,
+                        mColors,
+                        mSelectedColor,
+                        5, // Number of columns
+                        ColorPickerDialog.SIZE_SMALL,
+                        true // True or False to enable or disable the serpentine effect
+                        //0, // stroke width
+                        //Color.BLACK // stroke color
+                );
+
+                dialog.setOnColorSelectedListener(new ColorPickerSwatch.OnColorSelectedListener() {
+
+                    @Override
+                    public void onColorSelected(int color) {
+                         mSelectedColor = color;
+                        try {
+                            //textView.setTextColor(mSelectedColor);
+                            robeInfoObj.setColour(Integer.toString(mSelectedColor));
+                            colorButton.setBackgroundColor(Integer.valueOf(robeInfoObj.getColour()));
+                        } catch (NullPointerException e){
+                            Log.i("Exception", "onColorSelected: "+e);
+                        }
+                    }
+
+                });
+
+                dialog.show(getFragmentManager(), "color_dialog_test");
             }
         });
 

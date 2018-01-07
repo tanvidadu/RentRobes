@@ -29,11 +29,7 @@
 
         <activity android:name=".MainActivity" />
         <activity android:name=".SellOption">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".GenerateRequest" />
         <activity android:name=".generate_request_address" />
@@ -41,7 +37,11 @@
 
         </activity>
         <activity android:name=".LoginActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity android:name=".TypeWiseList" />
         <activity android:name=".Catalog" />
@@ -56,9 +56,6 @@
         <activity android:name=".PickDate" />
         <activity android:name=".Temporary" />
         <activity android:name=".SignUp" />
-        <activity android:name=".Main2Activity">
-
-        </activity>
     </application>
 
 </manifest>

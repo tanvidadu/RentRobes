@@ -12,6 +12,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.TextView;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -39,6 +41,29 @@ public class GenerateRequest extends AppCompatActivity {
             public void onClick(View v) {
                 Intent i = new Intent(GenerateRequest.this , generate_request_address.class);
                 startActivity(i);
+            }
+        });
+
+        final ImageButton pickUpDate = (ImageButton) findViewById(R.id.LockPickUPDate);
+        pickUpDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                pickUpDate.setImageDrawable(getResources().getDrawable(R.drawable.tick_mark_icon_png_6619));
+                Button button = (Button) findViewById(R.id.pickupDatebutton);
+                button.setText(DatePickerFragment.getrdayOfMonth() + "/" + (DatePickerFragment.getRmonth()+1) + "/" + DatePickerFragment.getRyear());
+                TextView textView = (TextView) findViewById(R.id.LockDateView4);
+                textView.setVisibility(View.INVISIBLE);
+            }
+        });
+        final ImageButton pickUpTime = (ImageButton) findViewById(R.id.LockPickUPTime);
+        pickUpTime.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                pickUpTime.setImageDrawable(getResources().getDrawable(R.drawable.tick_mark_icon_png_6619));
+                Button button = (Button) findViewById(R.id.pickupTimebutton);
+                button.setText(TimePickerFragment.getmHourOfDay()+":" + TimePickerFragment.getMminute());
+                TextView textView = (TextView) findViewById(R.id.LockTimeView);
+                textView.setVisibility(View.INVISIBLE);
             }
         });
 

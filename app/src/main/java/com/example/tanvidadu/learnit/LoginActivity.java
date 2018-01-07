@@ -125,8 +125,10 @@ public class LoginActivity extends AppCompatActivity {
 
 
     private void onSignedinIntialize(String name) {
-        TextView textView = (TextView) findViewById(R.id.WelcomeText);
-        textView.setText("WELCOME TO RENTROBES ");
+        TextView textView = (TextView) findViewById(R.id.WelcomeText2);
+        textView.setText(" WELCOME TO  ");
+        textView = (TextView) findViewById(R.id.WelcomeText1);
+        textView.setText(" RENTROBES ");
         textView = (TextView) findViewById(R.id.WelcomeName);
         textView.setText(name);
     }
