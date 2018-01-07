@@ -26,12 +26,13 @@ public class PickDate extends AppCompatActivity {
     private FirebaseDatabase firebaseDatabase;
     private DatabaseReference databaseReference;
     private int isAvailable = -1;
+    private boolean isProcessed = false;
     private BookingDate rentedDates = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pick_date);
-
+        isProcessed = false;
         try {
             Bundle data = getIntent().getExtras();
             RobeSelected = (RobesForRent) data.getParcelable("PaymentOfRobe");
@@ -91,10 +92,8 @@ public class PickDate extends AppCompatActivity {
                    Intent i = new Intent(PickDate.this , Catalog.class);
                    startActivity(i);
                }
-               if( isAvailable == -1){
-                   Toast.makeText(PickDate.this , "Processing" , Toast.LENGTH_LONG).show();
-               }
-             if(isAvailable == 1){
+
+             if(isAvailable == 1 || isProcessed == false){
                    try {
                        rentedDates.setsDate(sDate);
                        rentedDates.setsMonth(sMonth);
@@ -110,7 +109,7 @@ public class PickDate extends AppCompatActivity {
                  i.putExtra("BookingDates" ,  rentedDates);
                  startActivity(i);
              }
-               if( isAvailable == -1){
+               if( isAvailable == -1 && isProcessed == true){
                    Toast.makeText(PickDate.this , "Processing" , Toast.LENGTH_LONG).show();
                }
 
@@ -126,6 +125,7 @@ public class PickDate extends AppCompatActivity {
                sYear = DatePickerFragment.getRyear();
                lockStartDate.setImageDrawable(getResources().getDrawable(R.drawable.tick_mark_icon_png_6619));
                buttonStartDate.setText(sDate+"/" + sMonth+ "/"+sYear);
+               lockDateView1.setVisibility(View.INVISIBLE);
                Log.i("date", "onClick: " + sDate + " " + sMonth + " " +sYear );
            }
        });
@@ -140,6 +140,7 @@ public class PickDate extends AppCompatActivity {
                 eYear = DatePickerFragment.getRyear();
                 lockEndDate.setImageDrawable(getResources().getDrawable(R.drawable.tick_mark_icon_png_6619));
                 buttonEndDate.setText(eDate+"/"+eMonth+"/"+eYear);
+                lockDateView2.setVisibility(View.INVISIBLE);
                 textView.setVisibility(View.VISIBLE);
                 button.setVisibility(View.VISIBLE);
                 Log.i("date", "onClick: " + eDate + " " + eMonth + " " +eYear );
@@ -157,6 +158,7 @@ public class PickDate extends AppCompatActivity {
                         BookingDate date = dataSnapshot.getValue(BookingDate.class);
                         boolean x = date.Compare(sDate,sMonth,sYear,eDate,eMonth,eYear);
                         Log.i(TAG, "onChildAdded: "+isAvailable);
+                        isProcessed = true;
                         if(isAvailable != 0){
                             if( x){
                                 isAvailable =1;
@@ -164,6 +166,7 @@ public class PickDate extends AppCompatActivity {
                                 isAvailable = 0;
                             }
                         }
+                        Toast.makeText(PickDate.this , "Processing" , Toast.LENGTH_SHORT).show();
 
                     }
 
@@ -187,7 +190,15 @@ public class PickDate extends AppCompatActivity {
 
                     }
                 });
-
+                if(isAvailable == 0){
+                    Toast.makeText( PickDate.this,"NOT AVAILABLE" , Toast.LENGTH_LONG).show();
+                }
+                if( isAvailable == -1 && isProcessed == true){
+                    Toast.makeText(PickDate.this , "Processing" , Toast.LENGTH_LONG).show();
+                }
+                if(isAvailable == 1 || isProcessed == false){
+                    Toast.makeText(PickDate.this , "AVAILABLE" , Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
@@ -197,9 +208,6 @@ public class PickDate extends AppCompatActivity {
 
     public void showDatePickerDialog(View v) {
         DialogFragment newFragment = new DatePickerFragment();
-
         newFragment.show(getFragmentManager(), "datePicker");
-
-
     }
 }
