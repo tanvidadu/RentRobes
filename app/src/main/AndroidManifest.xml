@@ -37,8 +37,12 @@
         </activity>
         <activity android:name=".GenerateRequest" />
         <activity android:name=".generate_request_address" />
-        <activity android:name=".RequestSummary" />
-        <activity android:name=".LoginActivity"></activity>
+        <activity android:name=".RequestSummary" >
+
+        </activity>
+        <activity android:name=".LoginActivity">
+
+        </activity>
         <activity android:name=".TypeWiseList" />
         <activity android:name=".Catalog" />
         <activity android:name=".Settings" />

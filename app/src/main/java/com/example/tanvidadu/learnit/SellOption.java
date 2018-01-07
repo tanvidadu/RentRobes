@@ -122,7 +122,7 @@ public class SellOption extends AppCompatActivity {
                 robeInfoObj.setDay_of_month(DatePickerFragment.getrdayOfMonth());
                 robeInfoObj.setMonth(DatePickerFragment.getRmonth());
                 robeInfoObj.setYear(DatePickerFragment.getRyear());
-                button.setText(robeInfoObj.getDay_of_month() + "/" + robeInfoObj.getMonth()+"/" + robeInfoObj.getYear());
+                button.setText(robeInfoObj.getDay_of_month() + "/" + (robeInfoObj.getMonth()+1) +"/" + robeInfoObj.getYear());
                 TextView textView = ( TextView) findViewById(R.id.LockDateView);
                 textView.setVisibility(View.INVISIBLE);
             }
@@ -179,11 +179,11 @@ public class SellOption extends AppCompatActivity {
                 int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
                 imgDecodableString = cursor.getString(columnIndex);
                 cursor.close();
-                imageView.setImageBitmap(BitmapFactory
-                                .decodeFile(imgDecodableString));
+                Bitmap photo = BitmapFactory
+                        .decodeFile(imgDecodableString);
+                imageView.setImageBitmap(photo);
+                robeInfoObj.setImage_url(encodeBitmap(photo));
             } else {
-                Toast.makeText(this, "You haven't picked Image",
-                        Toast.LENGTH_LONG).show();
             }
         } catch (Exception e) {
             Toast.makeText(this, "Something went wrong", Toast.LENGTH_LONG)
@@ -200,11 +200,12 @@ public class SellOption extends AppCompatActivity {
                 int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
                 imgDecodableString = cursor.getString(columnIndex);
                 cursor.close();
-                billView.setImageBitmap(BitmapFactory
-                        .decodeFile(imgDecodableString));
+                Bitmap photo = BitmapFactory
+                        .decodeFile(imgDecodableString);
+                billView.setImageBitmap(photo);
+                robeInfoObj.setBill_url(encodeBitmap(photo));
             } else {
-                Toast.makeText(this, "You haven't picked Image",
-                        Toast.LENGTH_LONG).show();
+
             }
         } catch (Exception e) {
             Toast.makeText(this, "Something went wrong", Toast.LENGTH_LONG)

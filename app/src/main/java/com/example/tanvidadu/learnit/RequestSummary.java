@@ -6,6 +6,7 @@ import android.graphics.BitmapFactory;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Base64;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -62,6 +63,7 @@ public class RequestSummary extends AppCompatActivity {
         });
 
         long UniqueId = Robes.getUnique_pdt_id();
+        Log.i("UNIQUE_ID", "onCreate: "+ UniqueId);
         ///UniqueId = 65506;
 
         Query requestSummaryRobes = requestSummaryRobeToSold.orderByChild("uniqueId").equalTo(UniqueId);
@@ -130,7 +132,7 @@ public class RequestSummary extends AppCompatActivity {
 
     private void DisplayRequestInfo(SellRequest generateRequest) {
         TextView display = (TextView) findViewById(R.id.requestSummaryExpectedPrice);
-        display.setText(generateRequest.getExpectedPrice());
+        display.setText(Float.toString(generateRequest.getExpectedPrice()));
         display = (TextView) findViewById(R.id.requestSummaryDate);
         display.setText(generateRequest.getDayOfMonth()+"/"
                 + generateRequest.getMonth() + "/" +
@@ -138,8 +140,12 @@ public class RequestSummary extends AppCompatActivity {
         display = (TextView) findViewById(R.id.requestSummaryTime);
         display.setText( generateRequest.getHourOfDay() + ":" +
         generateRequest.getMinute());
-        display = (TextView) findViewById(R.id.requestSummaryAddress);
-        display.setText( generateRequest.toStringAddress());
+        display = (TextView) findViewById(R.id.requestSummaryAddress1);
+        display.setText( generateRequest.getAddress().getStreet_Address_1() + ", " + generateRequest.getAddress().getStreet_Address_2());
+        display = ( TextView) findViewById(R.id.requestSummaryAddress2);
+        display.setText(generateRequest.getAddress().getCity()+", " + generateRequest.getAddress().getState());
+        display = (TextView) findViewById(R.id.requestSummaryAddress3);
+        display.setText(generateRequest.getAddress().getCountry()+ generateRequest.getAddress().getPincode());
 
     }
 

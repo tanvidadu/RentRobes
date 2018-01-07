@@ -1,25 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="com.example.tanvidadu.learnit.GenerateRequest">
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:orientation="vertical">
+       <TextView
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_marginTop="32dp"
+           android:layout_marginLeft="12dp"
+           android:layout_marginRight="12dp"
+           android:textSize="32dp"
+           android:text="PICK UP INFO FORM"
+           android:gravity="center"
+           android:textColor="@color/catalog_color_2"
+           />
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="ENTER ADDRESS"
+        android:textStyle="bold"
+        android:layout_marginTop="32dp"
+        android:layout_marginLeft="12dp"
+        android:textColor="@color/dark_grey"
+        android:layout_marginRight="12dp"
+        android:textSize="24dp"
         android:id="@+id/requestAddress"/>
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="SELECT SELLING DATE"
+        android:textStyle="bold"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
+        android:layout_marginTop="32dp"
+        android:textColor="@color/dark_grey"
+        android:textSize="24dp"
         android:onClick="showDatePickerDialog"/>
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="SELECT VALID TIME"
+        android:textStyle="bold"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
+        android:layout_marginTop="32dp"
+        android:textColor="@color/dark_grey"
+        android:textSize="24dp"
         android:onClick="showTimePickerDialog"
         />
     <EditText
@@ -27,10 +61,24 @@
         android:layout_height="wrap_content"
         android:hint="ENTER EXPECTED PRICE"
         android:id="@+id/sellExpectedPrice"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
+        android:layout_marginTop="32dp"
+        android:textStyle="bold"
+        android:textColor="@color/dark_grey"
+        android:textSize="24dp"
         />
+   </LinearLayout>
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="GENERATE REQUEST"
+        android:textStyle="bold"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="bottom"
+        android:textColor="@color/textColor"
+        android:background="@color/dark_grey"
+        android:textSize="32dp"
         android:onClick="GenerateRequest"/>
-</LinearLayout>
+</RelativeLayout>

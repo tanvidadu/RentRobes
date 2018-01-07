@@ -23,13 +23,14 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
         <ImageView
-            android:layout_width="150dp"
-            android:layout_height="150dp"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
             android:padding="18dp"
+            android:scaleType="centerCrop"
             android:id="@+id/requestSummaryRobeImage"/>
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="150dp"
+            android:layout_height="200dp"
             android:orientation="vertical">
             <TextView
                 android:layout_width="match_parent"
@@ -37,7 +38,7 @@
                 tools:hint="Name Of User"
                 android:textSize="18dp"
                 android:paddingLeft="32dp"
-                android:layout_marginTop="12dp"/>
+                android:layout_marginTop="42dp"/>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -140,16 +141,39 @@
             android:paddingTop="18dp"
             android:text="ADDRESS :"
             />
-    <TextView
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+        <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingLeft="32dp"
         android:paddingRight="3dp"
         android:textSize="18sp"
         android:paddingTop="18dp"
-        tools:hint="ADDRESS"
-        android:id="@+id/requestSummaryAddress"
+        tools:hint="Street1 + street2"
+        android:id="@+id/requestSummaryAddress1"
         />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="32dp"
+                android:paddingRight="3dp"
+                android:textSize="18sp"
+                tools:hint="city + state"
+                android:id="@+id/requestSummaryAddress2"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="32dp"
+                android:paddingRight="3dp"
+                android:textSize="18sp"
+                tools:hint="country + pincode"
+                android:id="@+id/requestSummaryAddress3"
+                />
+        </LinearLayout>
     </LinearLayout>
 
 

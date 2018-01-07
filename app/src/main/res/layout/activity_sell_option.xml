@@ -10,6 +10,17 @@
     android:orientation="vertical"
     tools:context="com.example.tanvidadu.learnit.SellOption">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
+        android:textSize="32dp"
+        android:text="PRODUCT INFO FORM "
+        android:gravity="center"
+        android:textColor="@color/catalog_color_2"
+        />
 
     <Spinner
         android:id="@+id/NameOfCloth"
