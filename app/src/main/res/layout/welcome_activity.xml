@@ -13,42 +13,33 @@
         android:layout_height="match_parent"
         android:src="@drawable/welcome_page"
         android:scaleType="centerCrop"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/WelcomeName"
-            android:textSize="32dp"
-            android:layout_marginTop="12dp"
-            android:textStyle="bold"
-            android:gravity="center"
-            android:layout_centerVertical="true"
-            android:layout_centerHorizontal="true"
-            android:textColor="#cee0ff"
-            tools:hint="HI"/>
 
         <TextView
             android:id="@+id/WelcomeText1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/WelcomeName"
+            android:layout_centerVertical="true"
             android:layout_centerHorizontal="true"
             android:fontFamily="cursive"
             android:gravity="center"
             android:textColor="#e9f2cb"
             android:textSize="44dp"
             android:textStyle="bold"
+            android:background="@color/dark_grey"
             tools:hint="Welcome!!" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/WelcomeText2"
             android:textSize="44dp"
+            android:paddingBottom="4dp"
             android:textStyle="bold"
             android:gravity="center"
             android:layout_centerHorizontal="true"
             android:layout_above="@+id/WelcomeText1"
             android:textColor="@color/white"
-            tools:hint="Welcome!!"/>
+            tools:hint="Welcome!!"
+            android:background="@color/dark_grey"/>
 
     <Button
         android:layout_width="175dp"
@@ -67,6 +58,7 @@
         android:textColor="@color/textColor"
         android:onClick="proceedToMainActivty"
         android:layout_alignParentBottom="true"
+        android:id="@+id/WelcomesignUp"
         android:layout_toRightOf="@+id/SignOUT"/>
     </RelativeLayout>
 </LinearLayout>

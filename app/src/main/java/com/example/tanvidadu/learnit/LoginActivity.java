@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -129,8 +130,7 @@ public class LoginActivity extends AppCompatActivity {
         textView.setText(" WELCOME TO  ");
         textView = (TextView) findViewById(R.id.WelcomeText1);
         textView.setText(" RENTROBES ");
-        textView = (TextView) findViewById(R.id.WelcomeName);
-        textView.setText(name);
+
     }
 
     @Override
@@ -193,9 +193,12 @@ public class LoginActivity extends AppCompatActivity {
 
             }
         });
+        Button button = (Button) findViewById(R.id.WelcomesignUp);
+
         if(CustomerPresent.isPresent){
             return true;
         } else {
+            button.setText("SIGN  UP");
             return false;
         }
 
