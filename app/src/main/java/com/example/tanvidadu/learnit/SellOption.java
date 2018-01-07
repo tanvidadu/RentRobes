@@ -132,21 +132,11 @@ public class SellOption extends AppCompatActivity {
         robeToBeSoldDatabaseReference = firebaseDatabase.getReference().child("robeToBeSold");
 
         this.imageView = (ImageView)this.findViewById(R.id.Sell_cloth_image);
-        Button photoClothButton = (Button) this.findViewById(R.id.button_sell_upload_image);
-        Button photoBillButton = (Button) this.findViewById(R.id.button_sell_upload_bill);
         this.billView = (ImageView) this.findViewById(R.id.Sell_cloth_bill);
         imageView.setImageDrawable(getResources().getDrawable(R.drawable.ic_launcher_background));
         billView.setImageDrawable(getResources().getDrawable(R.drawable.ic_launcher_background));
 
-        photoClothButton.setOnClickListener(new View.OnClickListener() {
 
-            @Override
-            public void onClick(View v) {
-                Intent cameraIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
-                startActivityForResult(cameraIntent, CAMERA_CLOTH_REQUEST);
-
-            }
-        });
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -164,14 +154,7 @@ public class SellOption extends AppCompatActivity {
             }
         });
 
-        photoBillButton.setOnClickListener(new View.OnClickListener() {
 
-            @Override
-            public void onClick(View v) {
-                Intent cameraIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
-                startActivityForResult(cameraIntent, CAMERA_BILL_REQUEST);
-            }
-        });
     }
 
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -254,7 +237,7 @@ public class SellOption extends AppCompatActivity {
 
         /// calling intent
             Intent i = new Intent(this , GenerateRequest.class);
-            //i.putExtra("UNIQUE_PDT_ID" , robeInfoObj.getUnique_pdt_id());
+            i.putExtra("UNIQUE_PDT_ID" , robeInfoObj.getUnique_pdt_id());
             startActivity(i);
 
 

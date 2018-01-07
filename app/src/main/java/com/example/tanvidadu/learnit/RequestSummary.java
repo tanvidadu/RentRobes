@@ -26,6 +26,8 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+import uk.co.senab.photoview.PhotoViewAttacher;
+
 public class RequestSummary extends AppCompatActivity {
 
     FirebaseDatabase firebaseDatabase;
@@ -47,6 +49,15 @@ public class RequestSummary extends AppCompatActivity {
             public void onClick(View v) {
                 Intent i = new Intent(RequestSummary.this , MainActivity.class);
                 startActivity(i);
+            }
+        });
+        final ImageView imageView = ( ImageView) findViewById(R.id.requestSummaryRobeImage);
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                PhotoViewAttacher pAttacher;
+                pAttacher = new PhotoViewAttacher(imageView);
+                pAttacher.update();
             }
         });
 
@@ -119,18 +130,16 @@ public class RequestSummary extends AppCompatActivity {
 
     private void DisplayRequestInfo(SellRequest generateRequest) {
         TextView display = (TextView) findViewById(R.id.requestSummaryExpectedPrice);
-        display.setText("Expected Price : " + generateRequest.getExpectedPrice());
+        display.setText(generateRequest.getExpectedPrice());
         display = (TextView) findViewById(R.id.requestSummaryDate);
-        display.setText("Date Selected For Transcation : "
-                +generateRequest.getDayOfMonth()+"/"
+        display.setText(generateRequest.getDayOfMonth()+"/"
                 + generateRequest.getMonth() + "/" +
                  generateRequest.getYear());
         display = (TextView) findViewById(R.id.requestSummaryTime);
-        display.setText("Time Selected For Transaction : " +
-        generateRequest.getHourOfDay() + ":" +
+        display.setText( generateRequest.getHourOfDay() + ":" +
         generateRequest.getMinute());
         display = (TextView) findViewById(R.id.requestSummaryAddress);
-        display.setText("ADDRESS : "+ generateRequest.toStringAddress());
+        display.setText( generateRequest.toStringAddress());
 
     }
 

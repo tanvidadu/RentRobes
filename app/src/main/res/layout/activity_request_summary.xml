@@ -16,6 +16,7 @@
         android:padding="12dp"
         android:layout_gravity="center"
         android:gravity="center"
+        android:textColor="@color/catalog_color_2"
         />
     <LinearLayout
         android:layout_width="match_parent"
@@ -34,13 +35,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 tools:hint="Name Of User"
-                android:textSize="18sp"
-                android:paddingLeft="32dp" />
+                android:textSize="18dp"
+                android:paddingLeft="32dp"
+                android:layout_marginTop="12dp"/>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             tools:hint="Name of Robe"
-            android:textSize="18sp"
+            android:textSize="18dp"
             android:paddingLeft="32dp"
             android:paddingTop="18dp"
             android:id="@+id/requestSummaryNameOfRobe"/>
@@ -49,11 +51,25 @@
                 android:layout_height="wrap_content"
                 tools:hint="Brand"
                 android:paddingLeft="32dp"
-                android:textSize="18sp"
+                android:textSize="18dp"
                 android:paddingTop="18dp"
                 android:id="@+id/requestSummaryBrand"/>
            </LinearLayout>
     </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:paddingLeft="32dp"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            android:paddingTop="18dp"
+            android:text="EXPECTED PRICE :"
+            />
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -63,24 +79,67 @@
             tools:hint="Expected Price"
             android:id="@+id/requestSummaryExpectedPrice"
             />
-    <TextView
+    </LinearLayout>
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingLeft="32dp"
-        android:textSize="18sp"
-        android:paddingTop="18dp"
-        tools:hint="Date"
-        android:id="@+id/requestSummaryDate"
-        />
-    <TextView
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:paddingLeft="32dp"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            android:paddingTop="18dp"
+            android:text="PICK UP DATE :"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="32dp"
+            android:textSize="18sp"
+            android:paddingTop="18dp"
+            tools:hint="Date"
+            android:id="@+id/requestSummaryDate"
+            />
+    </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:paddingLeft="32dp"
+                android:textSize="18dp"
+                android:textStyle="bold"
+                android:paddingTop="18dp"
+                android:text="PICK UP TIME :"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="32dp"
+                android:textSize="18sp"
+                android:paddingTop="18dp"
+                tools:hint="Time"
+                android:id="@+id/requestSummaryTime"
+                />
+        </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingLeft="32dp"
-        android:textSize="18sp"
-        android:paddingTop="18dp"
-        tools:hint="Time"
-        android:id="@+id/requestSummaryTime"
-        />
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:paddingLeft="32dp"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            android:paddingTop="18dp"
+            android:text="ADDRESS :"
+            />
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -91,6 +150,7 @@
         tools:hint="ADDRESS"
         android:id="@+id/requestSummaryAddress"
         />
+    </LinearLayout>
 
 
 </LinearLayout>
