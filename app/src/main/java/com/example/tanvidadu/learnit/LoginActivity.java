@@ -75,7 +75,7 @@ public class LoginActivity extends AppCompatActivity {
                     // Choose authentication providers
                     List<AuthUI.IdpConfig> providers = Arrays.asList(
                             new AuthUI.IdpConfig.Builder(AuthUI.EMAIL_PROVIDER).build(),
-                            //new AuthUI.IdpConfig.Builder(AuthUI.PHONE_VERIFICATION_PROVIDER).build(),
+                            new AuthUI.IdpConfig.Builder(AuthUI.PHONE_VERIFICATION_PROVIDER).build(),
                             new AuthUI.IdpConfig.Builder(AuthUI.GOOGLE_PROVIDER).build()
                             //new AuthUI.IdpConfig.Builder(AuthUI.FACEBOOK_PROVIDER).build(),
                             //new AuthUI.IdpConfig.Builder(AuthUI.TWITTER_PROVIDER).build()
@@ -198,7 +198,6 @@ public class LoginActivity extends AppCompatActivity {
         if(CustomerPresent.isPresent){
             return true;
         } else {
-            button.setText("SIGN  UP");
             return false;
         }
 
@@ -209,14 +208,10 @@ public class LoginActivity extends AppCompatActivity {
 
     //Further to main Activity
     public void proceedToMainActivty (View v){
-        if(isAlreadyPresent){
+
             Intent i = new Intent(LoginActivity.this , MainActivity.class);
             startActivity(i);
-        } else {
-            Intent i = new Intent(LoginActivity.this , SignUp.class);
-            i.putExtra("CustomerInfo" ,customerInfo );
-            startActivity(i);
-        }
+
     }
 
 

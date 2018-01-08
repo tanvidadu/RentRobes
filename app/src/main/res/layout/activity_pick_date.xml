@@ -10,7 +10,7 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="CHECK AVAILABILITY"
+        android:text="CHOOSE DATES"
         android:layout_marginTop="32dp"
         android:layout_marginLeft="32dp"
         android:layout_marginRight="32dp"
@@ -83,18 +83,19 @@
         android:layout_marginTop="32dp"
         android:layout_marginRight="32dp"
         android:gravity="center"
-        android:textSize="32dp"
+        android:textSize="28dp"
         android:textColor="@color/textColor"
-        android:text=" CHECK DATES"
+        android:text=" CHECK AVAILABILITY"
         android:id="@+id/LockDateMessage"/>
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Proceed"
-        android:textSize="32dp"
+        android:textSize="28dp"
         android:layout_marginLeft="32dp"
         android:layout_marginRight="32dp"
+        android:layout_marginTop="18dp"
         android:textColor="@color/textColor"
         android:onClick="showDatePickerDialog"
         android:id="@+id/ProceedDates"/>

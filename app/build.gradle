@@ -45,6 +45,8 @@ dependencies {
     compile 'com.razorpay:checkout:1.4.1'
     compile 'com.squareup.picasso:picasso:2.5.2'
     compile 'com.commit451:PhotoView:1.2.5'
-
+    compile('com.facebook.android:facebook-android-sdk:4.27.0')
+    compile("com.twitter.sdk.android:twitter-core:3.0.0@aar") { transitive = true }
 }
+
 apply plugin: 'com.google.gms.google-services'

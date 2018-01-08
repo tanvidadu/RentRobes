@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -7,27 +7,34 @@
     tools:context="com.example.tanvidadu.learnit.ListItem"
     android:layout_height="match_parent"
     android:layout_width="match_parent">
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="32dp"
+        android:textSize="28dp"
         android:id="@+id/list_item_selected_name"
-        android:padding="12dp"
+        android:paddingHorizontal="12dp"
+        android:paddingVertical="6dp"
         android:gravity="center"
         />
 
         <ImageView
-            android:layout_width="300dp"
-            android:layout_height="300dp"
-            android:padding="18dp"
+            android:layout_width="230dp"
+            android:layout_height="230dp"
             android:layout_gravity="center_horizontal"
             android:scaleType="centerCrop"
             android:id="@+id/list_item_selected_imageId"/>
+    <TextView
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:textColor="@color/red"
+        android:layout_marginBottom="6dp"
+        android:layout_gravity="center_horizontal"
+        android:text="Tap to Zoom In or Zoom Out "
+        android:id="@+id/LockDateView"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -45,14 +52,14 @@
                 android:textStyle="bold"
                 android:paddingLeft="12dp"
                 android:textSize="18sp"
-                android:paddingTop="18dp" />
+                android:paddingTop="12dp" />
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             tools:hint="Name of Brand"
             android:textSize="18sp"
             android:paddingLeft="12dp"
-            android:paddingTop="18dp"
+            android:paddingTop="12dp"
             android:id="@+id/list_item_selected_brand"/>
         </LinearLayout>
             <LinearLayout
@@ -66,14 +73,14 @@
                     android:paddingLeft="12dp"
                     android:textStyle="bold"
                     android:textSize="18sp"
-                    android:paddingTop="18dp" />
+                    android:paddingTop="6dp" />
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             tools:hint="Price"
             android:paddingLeft="12dp"
             android:textSize="18sp"
-            android:paddingTop="18dp"
+            android:paddingTop="6dp"
             android:id="@+id/list_item_selected_Price"/>
             </LinearLayout>
         <LinearLayout
@@ -87,14 +94,14 @@
                 android:paddingLeft="12dp"
                 android:textSize="18sp"
                 android:textStyle="bold"
-                android:paddingTop="18dp" />
+                android:paddingTop="6dp" />
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             tools:hint="Size"
             android:paddingLeft="12dp"
             android:textSize="18sp"
-            android:paddingTop="18dp"
+            android:paddingTop="6dp"
             android:id="@+id/list_item_selected_Size"/>
         </LinearLayout>
 
@@ -109,25 +116,28 @@
                 android:textStyle="bold"
                 android:paddingLeft="12dp"
                 android:textSize="18sp"
-                android:paddingTop="18dp" />
+                android:paddingTop="6dp" />
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             tools:hint="Colour"
             android:paddingLeft="12dp"
             android:textSize="18sp"
-            android:paddingTop="18dp"
+            android:paddingTop="6dp"
             android:id="@+id/list_item_selected_Color"/>
         </LinearLayout>
+
+
     </LinearLayout>
+</LinearLayout>
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="32dp"
+        android:textSize="28dp"
         android:text="RENT "
+        android:layout_alignParentBottom="true"
         android:padding="2dp"
         android:textColor="#3bcc79"
         android:id="@+id/Payment"
         />
-    </LinearLayout>
-</ScrollView>
+</RelativeLayout>
