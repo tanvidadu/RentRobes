@@ -191,13 +191,13 @@ public class PickDate extends AppCompatActivity {
                     }
                 });
                 if(isAvailable == 0){
-                    Toast.makeText( PickDate.this,"NOT AVAILABLE" , Toast.LENGTH_LONG).show();
+                    Toast.makeText( PickDate.this,"SELECTED DRESS NOT AVAILABLE! PLEASE CLICK PROCEED" , Toast.LENGTH_LONG).show();
                 }
                 if( isAvailable == -1 && isProcessed == true){
-                    Toast.makeText(PickDate.this , "Processing" , Toast.LENGTH_LONG).show();
+                    Toast.makeText(PickDate.this , "CHECKING AVAILABILITY ! PLEASE WAIT" , Toast.LENGTH_LONG).show();
                 }
                 if(isAvailable == 1 || isProcessed == false){
-                    Toast.makeText(PickDate.this , "AVAILABLE" , Toast.LENGTH_SHORT).show();
+                    Toast.makeText(PickDate.this , " DRESS AVAILABE!! PLEASE CLICK PROCEED" , Toast.LENGTH_SHORT).show();
                 }
             }
         });

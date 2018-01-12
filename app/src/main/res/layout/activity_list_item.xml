@@ -33,7 +33,7 @@
         android:textColor="@color/red"
         android:layout_marginBottom="6dp"
         android:layout_gravity="center_horizontal"
-        android:text="Tap to Zoom In or Zoom Out "
+        android:text="Pinch out to Zoom In and Tap to Zoom Out "
         android:id="@+id/LockDateView"/>
 
     <LinearLayout
