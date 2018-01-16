@@ -8,6 +8,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.provider.MediaStore;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.AppCompatImageButton;
@@ -35,6 +36,7 @@ import org.xdty.preference.colorpicker.ColorPickerDialog;
 import org.xdty.preference.colorpicker.ColorPickerSwatch;
 
 import java.io.ByteArrayOutputStream;
+import java.util.Calendar;
 
 import uk.co.senab.photoview.PhotoViewAttacher;
 
@@ -156,9 +158,27 @@ public class SellOption extends AppCompatActivity {
                 robeInfoObj.setDay_of_month(DatePickerFragment.getrdayOfMonth());
                 robeInfoObj.setMonth(DatePickerFragment.getRmonth());
                 robeInfoObj.setYear(DatePickerFragment.getRyear());
+                Calendar currentDate = Calendar.getInstance();
+                int cdate = currentDate.get(Calendar.DATE);
+                int cmonth = currentDate.get(Calendar.MONTH);
+                int cyear = currentDate.get(Calendar.YEAR);
+                Date d = new Date();
+                int no_of_days = d.CalculateDays(1,1, robeInfoObj.getYear() , robeInfoObj.getDay_of_month(),robeInfoObj.getMonth(),robeInfoObj.getYear());
+                int no_of_days_passed = d.CalculateDays(1,1,cyear,cdate,cmonth,cyear);
+
                 button.setText(robeInfoObj.getDay_of_month() + "/" + (robeInfoObj.getMonth()+1) +"/" + robeInfoObj.getYear());
                 TextView textView = ( TextView) findViewById(R.id.LockDateView);
                 textView.setVisibility(View.INVISIBLE);
+                if(no_of_days < no_of_days_passed) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(SellOption.this)
+                            .setTitle("INVALID DATE")
+                            .setMessage("PLEASE SELECT DATE AFTER THE CURRENT DATE ");
+                    AlertDialog dialog = builder.create();
+                    dialog.show();
+                    imageButton.setImageDrawable(getResources().getDrawable(R.drawable.exclamation_mark_red));
+                    button.setText("PURCHASE DATE");
+                    textView.setVisibility(View.VISIBLE);
+                }
             }
         });
 
