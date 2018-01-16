@@ -3,6 +3,7 @@ package com.example.tanvidadu.learnit;
 import android.app.DialogFragment;
 import android.content.Intent;
 import android.os.Parcelable;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -17,6 +18,8 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.Calendar;
 
 public class PickDate extends AppCompatActivity {
     private static final String TAG = " Pick Date" ;
@@ -127,6 +130,23 @@ public class PickDate extends AppCompatActivity {
                buttonStartDate.setText(sDate+"/" + sMonth+ "/"+sYear);
                lockDateView1.setVisibility(View.INVISIBLE);
                Log.i("date", "onClick: " + sDate + " " + sMonth + " " +sYear );
+               Calendar currentDate = Calendar.getInstance();
+               int cdate = currentDate.get(Calendar.DATE);
+               int cmonth = currentDate.get(Calendar.MONTH);
+               int cyear = currentDate.get(Calendar.YEAR);
+               Date d = new Date();
+               int no_of_days = d.CalculateDays(1,1,DatePickerFragment.getRyear(), DatePickerFragment.getrdayOfMonth() , DatePickerFragment.getRmonth(),DatePickerFragment.getRyear());
+               int no_of_days_passed = d.CalculateDays(1,1,cyear,cdate,cmonth,cyear);
+               if(no_of_days < no_of_days_passed) {
+                   AlertDialog.Builder builder = new AlertDialog.Builder(PickDate.this)
+                           .setTitle("INVALID DATE")
+                           .setMessage("PLEASE SELECT DATE AFTER THE CURRENT DATE ");
+                   AlertDialog dialog = builder.create();
+                   dialog.show();
+                   lockStartDate.setImageDrawable(getResources().getDrawable(R.drawable.exclamation_mark_red));
+                   buttonStartDate.setText("STARTING DATE");
+                   lockDateView1.setVisibility(View.VISIBLE);
+               }
            }
        });
 
@@ -144,6 +164,36 @@ public class PickDate extends AppCompatActivity {
                 textView.setVisibility(View.VISIBLE);
                 button.setVisibility(View.VISIBLE);
                 Log.i("date", "onClick: " + eDate + " " + eMonth + " " +eYear );
+                Calendar currentDate = Calendar.getInstance();
+                int cdate = currentDate.get(Calendar.DATE);
+                int cmonth = currentDate.get(Calendar.MONTH);
+                int cyear = currentDate.get(Calendar.YEAR);
+                Date d = new Date();
+                int no_of_days = d.CalculateDays(1,1,DatePickerFragment.getRyear(), DatePickerFragment.getrdayOfMonth() , DatePickerFragment.getRmonth(),DatePickerFragment.getRyear());
+                int no_of_days_passed = d.CalculateDays(1,1,cyear,cdate,cmonth,cyear);
+                if(no_of_days < no_of_days_passed) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(PickDate.this)
+                            .setTitle("INVALID DATE")
+                            .setMessage("PLEASE SELECT DATE AFTER THE CURRENT DATE ");
+                    AlertDialog dialog = builder.create();
+                    dialog.show();
+                    lockEndDate.setImageDrawable(getResources().getDrawable(R.drawable.exclamation_mark_red));
+                    buttonEndDate.setText("ENDING DATE");
+                    lockDateView2.setVisibility(View.VISIBLE);
+                }
+
+                no_of_days = d.CalculateDays(1,1,eYear, eDate , eMonth,eYear);
+                no_of_days_passed = d.CalculateDays(1,1,sYear,sDate,sMonth,sYear);
+                if(no_of_days < no_of_days_passed) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(PickDate.this)
+                            .setTitle("INVALID DATE")
+                            .setMessage("PLEASE SELECT DATE AFTER THE STARTING DATE ");
+                    AlertDialog dialog = builder.create();
+                    dialog.show();
+                    lockEndDate.setImageDrawable(getResources().getDrawable(R.drawable.exclamation_mark_red));
+                    buttonEndDate.setText("ENDING DATE");
+                    lockDateView2.setVisibility(View.VISIBLE);
+                }
 
 
             }

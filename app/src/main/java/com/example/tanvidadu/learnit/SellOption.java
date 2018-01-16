@@ -169,10 +169,10 @@ public class SellOption extends AppCompatActivity {
                 button.setText(robeInfoObj.getDay_of_month() + "/" + (robeInfoObj.getMonth()+1) +"/" + robeInfoObj.getYear());
                 TextView textView = ( TextView) findViewById(R.id.LockDateView);
                 textView.setVisibility(View.INVISIBLE);
-                if(no_of_days < no_of_days_passed) {
+                if(no_of_days >= no_of_days_passed) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(SellOption.this)
                             .setTitle("INVALID DATE")
-                            .setMessage("PLEASE SELECT DATE AFTER THE CURRENT DATE ");
+                            .setMessage("PLEASE SELECT DATE BEFORE THE CURRENT DATE ");
                     AlertDialog dialog = builder.create();
                     dialog.show();
                     imageButton.setImageDrawable(getResources().getDrawable(R.drawable.exclamation_mark_red));
