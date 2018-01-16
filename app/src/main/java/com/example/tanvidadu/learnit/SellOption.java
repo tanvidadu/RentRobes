@@ -47,6 +47,7 @@ public class SellOption extends AppCompatActivity {
 
     private ImageView imageView;
     private ImageView billView;
+    private TextView colorView;
 
     private Robes robeInfoObj = new Robes();
 
@@ -70,7 +71,7 @@ public class SellOption extends AppCompatActivity {
 
         }
 
-
+        colorView = (TextView) findViewById(R.id.displayColor);
         colorButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -94,7 +95,9 @@ public class SellOption extends AppCompatActivity {
                         try {
                             //textView.setTextColor(mSelectedColor);
                             robeInfoObj.setColour(Integer.toString(mSelectedColor));
-                            colorButton.setBackgroundColor(Integer.valueOf(robeInfoObj.getColour()));
+                            //colorButton.setBackgroundColor(Integer.valueOf(robeInfoObj.getColour()));
+                            colorView.setBackgroundColor(Integer.valueOf(robeInfoObj.getColour()));
+
                         } catch (NullPointerException e){
                             Log.i("Exception", "onColorSelected: "+e);
                         }
