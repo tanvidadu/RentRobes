@@ -28,9 +28,9 @@ public class Temporary extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_temporary);
 
-        /*firebaseDatabase = FirebaseDatabase.getInstance();
-        *//*robeToBeSoldDatabaseReference = firebaseDatabase.getReference().child("robeForRent").child("dress");
-        robeToBeSoldDatabaseReference.addChildEventListener(new ChildEventListener() {
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        robeToBeSoldDatabaseReference = firebaseDatabase.getReference().child("robeForRent").child("dress");
+        /*robeToBeSoldDatabaseReference.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 RobesForRent robesForRent = dataSnapshot.getValue(RobesForRent.class);
@@ -56,19 +56,19 @@ public class Temporary extends AppCompatActivity {
             public void onCancelled(DatabaseError databaseError) {
 
             }
-        });*//*
-        DatabaseReference databaseReference = firebaseDatabase.getReference().child("robeForRent").child("ACCESSORIES (MEN)");
+        });*/
+        //DatabaseReference databaseReference = firebaseDatabase.getReference().child("robeForRent").child("");
         RobesForRent robesForRent = new RobesForRent();
-        robesForRent.setName("Black Gold Cufflinks");
-        robesForRent.setBrand("U7");
+        robesForRent.setName("Dress Suit");
+        robesForRent.setBrand("Dhgate");
         robesForRent.setSize(14);
         robesForRent.setPrice(2300);
-        robesForRent.setColor("Gold");
-        robesForRent.setUrl("iness-Suit-Hexagon-Tie-Clips-Cufflinks.jpg_640x640.jpg");
-
+        robesForRent.setColor("Grey");
+        robesForRent.setUrl("https://ae01.alicdn.com/kf/HTB1_GJILpXXXXa9XVXXq6xXFXXXn/Spring-Autumn-Women-Business-Suits-Formal-Office-Suits-Work-Gray-Skirt-and-Blazer-Sets-Slim-Ladies.jpg_640x640.jpg");
+        robeToBeSoldDatabaseReference.push().setValue(robesForRent);
     }
 
-   *//* private void AddBookedValue(String key) {
+   /* private void AddBookedValue(String key) {
         BookingDate bookingDate = new BookingDate();
         bookingDate.setsDate(12);
         bookingDate.setsMonth(1);
@@ -81,4 +81,3 @@ public class Temporary extends AppCompatActivity {
     }*/
     }
 
-}

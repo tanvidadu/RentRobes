@@ -55,7 +55,9 @@
 
         <activity android:name=".MerchantActivity" />
         <activity android:name=".PickDate" />
-        <activity android:name=".Temporary" />
+        <activity android:name=".Temporary" >
+
+        </activity>
         <activity android:name=".SignUp" />
     </application>
 
