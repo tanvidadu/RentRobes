@@ -8,5 +8,25 @@ RentRobes is an android based application which provides a platform for renting 
 
 <img src="/Images/GifForRentingFeature.gif"  width="300px">
 
+## SELLING ROBES
+
+1) Fill The form 
+
+<img src="/Images/SellForm.jpeg"  width="200px">
+
+2) Upload the relevant Images 
+
+<img src="/Images/SellForm2.jpeg"  width="200px">
+
+3) Fill the Pick Up Info
+
+<img src="/Images/PickUpInfo.jpeg"  width="200px">    <img src="/Images/Address.jpeg"  width="200px">
+
+##### Once the all Info has been filled Select the Generate Request Button.
+
+
+
+
+
 
 ###### This project is made under the supervision and guidance of Ms Apoorva Bhalla , Mentor Learn IT, Girl 3rd edition .
