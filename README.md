@@ -6,7 +6,7 @@ RentRobes is an android based application which provides a platform for renting 
 
 ## RENTING ROBES
 
-<img src="/Images/GifForRentingFeature"  width="300px">
+<img src="/Images/GifForRentingFeature.gif"  width="300px">
 
 
 ###### This project is made under the supervision and guidance of Ms Apoorva Bhalla , Mentor Learn IT, Girl 3rd edition .
