@@ -1,4 +1,8 @@
 # RentRobes
+
+[![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com) [![Open Source Love](https://badges.frapsoft.com/os/v2/open-source.svg?v=102)](https://github.com/ellerbrock/open-source-badge/)
+
+
 ## Idea Behind RentRobes              
 RentRobes is an android based application which provides a platform for renting and selling of second-hand clothes. This is a basic implementation of a start-up idea which is currently evolving. Essentially, the idea is to provide users with the facility of selling branded second-hand clothes to the company and renting branded clothes both brand new and second-hand from the company. It is a user-friendly app which provides user to select clothes ranging from traditional to formals both for men and women. It also provides access to different types of accessories for both the genders.
 
