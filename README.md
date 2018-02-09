@@ -36,8 +36,8 @@ Once the all Info has been filled Select the Generate Request Button.
 
 ## Code & Issues
 If you are a developer and you wish to contribute to the app please fork the project
-and submit a pull request.
-If you have any questions, feel free to ask [me](mailto:tanvidadu1998@gmail.com) about whatever you want.
+and submit a pull request. :ghost:
+If you have any questions, feel free to ask [me](mailto:tanvidadu1998@gmail.com) about whatever you want. :ghost:
 
 ## Project Maintainers
 This project is founded and actively maintained by [TanviDadu](https://github.com/tanvidadu). For any sort of queries feel free to mail at tanvidadu1998@gmail.com.
