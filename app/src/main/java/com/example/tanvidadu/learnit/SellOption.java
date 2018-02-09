@@ -130,7 +130,7 @@ public class SellOption extends AppCompatActivity {
             }
 
         });
-
+        //Declare a spinner
         Spinner spinner_size = (Spinner) findViewById(R.id.Size);
         ArrayAdapter<CharSequence> adapter_size = ArrayAdapter.createFromResource(this,
                 R.array.Size_array, android.R.layout.simple_spinner_item);
